@@ -29,7 +29,7 @@ public class Squad_logic : MonoBehaviour
         var newSoldier = Instantiate(lastSoldier);
         
         // Spawn new soldier behind squad and set AI control
-        newSoldier.transform.position = new Vector3(newSoldier.transform.position.x - 3,newSoldier.transform.position.y, newSoldier.transform.position.z);
+        newSoldier.transform.position = new Vector3(newSoldier.transform.position.x - 5,newSoldier.transform.position.y + 1, newSoldier.transform.position.z);
         newSoldier.GetComponent<Soldier_control>().SetTarget(lastSoldier);
         newSoldier.GetComponent<Soldier_control>().SetControlAi();
         // Add new name and set parent -> squad
