@@ -7,8 +7,11 @@ using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private Weapons_Type Weapon_Type = Weapons_Type.Pistol;
-    [SerializeField] private GameObject Bullet;
+    [SerializeField]
+    private Weapons_Type Weapon_Type = Weapons_Type.Pistol;
+
+    [SerializeField]
+    private GameObject Bullet;
     private float coolDownShoot = 0;
     public float timerShoot = 0;
     private int damage = 0;
@@ -17,6 +20,7 @@ public class Weapon : MonoBehaviour
     private int count_magazine = 0;
 
     private float speed_bullet;
+
     void Start()
     {
         SetParameterWeapon();
@@ -25,16 +29,16 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
-        
     }
 
     public void SetWeapon(Weapons_Type weapon)
     {
         var needRefresh = false || Weapon_Type != weapon;
         Weapon_Type = weapon;
-        if(needRefresh)
+        if (needRefresh)
             SetParameterWeapon();
     }
+
     public void Shoot()
     {
         switch (Weapon_Type)
@@ -141,8 +145,8 @@ public class Weapon : MonoBehaviour
             case Weapons_Type.Pistol:
                 speed_bullet = 14f;
                 coolDownShoot = 0.5f;
-                damage = 10; 
-                
+                damage = 10;
+
                 ammo_in_magazine = 15;
                 ammo_temp = ammo_in_magazine;
                 count_magazine = 3;
@@ -215,7 +219,6 @@ public class Weapon : MonoBehaviour
         // Bullet size and instantiate 'Bullet' component
         bullet.transform.localScale = new Vector3(0.3f, 0.3f, 1);
         bullet.AddComponent<Bullet>().Instantiate(bullet, mousePosition, speed_bullet);
-
     }
 
     private void ShootShootGun(string dir = "")
@@ -241,9 +244,8 @@ public class Weapon : MonoBehaviour
 
         // Bullet size and instantiate 'Bullet' component
         bullet.transform.localScale = new Vector3(0.15f, 0.15f, 1);
-        
 
-        if(dir == "")
+        if (dir == "")
         {
             ShootShootGun("Top");
             ShootShootGun("Bottom");
@@ -264,7 +266,6 @@ public class Weapon : MonoBehaviour
         // Bullet size and instantiate 'Bullet' component
         bullet.transform.localScale = new Vector3(0.1f, 0.15f, 1);
         bullet.AddComponent<Bullet>().Instantiate(bullet, mousePosition, speed_bullet);
-
     }
 
     private void ShootLittleMachineGun()
@@ -279,7 +280,6 @@ public class Weapon : MonoBehaviour
         // Bullet size and instantiate 'Bullet' component
         bullet.transform.localScale = new Vector3(0.1f, 0.12f, 1);
         bullet.AddComponent<Bullet>().Instantiate(bullet, mousePosition, speed_bullet);
-
     }
 
     private void ShootSniper_Rifle()
@@ -294,7 +294,6 @@ public class Weapon : MonoBehaviour
         // Bullet size and instantiate 'Bullet' component
         bullet.transform.localScale = new Vector3(1.2f, 0.5f, 1);
         bullet.AddComponent<Bullet>().Instantiate(bullet, mousePosition, speed_bullet);
-
     }
 
     private void ShootGrenade_Launcher()
@@ -309,7 +308,6 @@ public class Weapon : MonoBehaviour
         // Bullet size and instantiate 'Bullet' component
         bullet.transform.localScale = new Vector3(1f, 1f, 1);
         bullet.AddComponent<Bullet>().Instantiate(bullet, mousePosition, speed_bullet);
-
     }
 
     public enum Weapons_Type
