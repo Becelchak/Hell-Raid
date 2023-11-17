@@ -9,16 +9,19 @@ public class Bullet : MonoBehaviour
     private Vector3 direction_move;
     private float speed;
     private float angleDir;
-    void Start()
-    {
 
-    }
+    void Start() { }
 
     void Update()
     {
-        if (self.transform.position == direction_move) Destroy(self);
-        self.transform.position = Vector3.MoveTowards(self.transform.position, direction_move, speed * Time.deltaTime);
-        Destroy(self,5f);
+        if (self.transform.position == direction_move)
+            Destroy(self);
+        self.transform.position = Vector3.MoveTowards(
+            self.transform.position,
+            direction_move,
+            speed * Time.deltaTime
+        );
+        Destroy(self, 5f);
     }
 
     void FixedUpdate()
@@ -29,13 +32,18 @@ public class Bullet : MonoBehaviour
     public void Instantiate(GameObject bullet, Vector3 direction, float speed)
     {
         self = bullet;
-        direction_move = new Vector3(direction.x, direction.y, 1); ;
+        self.tag = "Bullet";
+        direction_move = new Vector3(direction.x, direction.y, 1);
+        ;
         this.speed = speed;
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 1);
 
         // Get Angle in Radians
-        var angleRad = Mathf.Atan2(direction.y - transform.position.y, direction.x - transform.position.x);
+        var angleRad = Mathf.Atan2(
+            direction.y - transform.position.y,
+            direction.x - transform.position.x
+        );
         // Get Angle in Degrees
         angleDir = (180 / Mathf.PI) * angleRad;
         // Rotate Object

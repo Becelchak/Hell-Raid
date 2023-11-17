@@ -6,22 +6,27 @@ using UnityEngine;
 public class Soldier_control : MonoBehaviour
 {
     [Header("Move parameter")]
-    [SerializeField] private float Speed = 5f;
-    [SerializeField] private bool Is_Player = false;
-    [SerializeField] private GameObject Target_Follow;
+    [SerializeField]
+    private float Speed = 5f;
+
+    [SerializeField]
+    private bool Is_Player = false;
+
+    [SerializeField]
+    private GameObject Target_Follow;
     private bool canFollow = true;
+
     //private float collDownFollow = 0.1f;
 
     [Header("Weapon parameter")]
-    [SerializeField] private Weapon.Weapons_Type Weapon = global::Weapon.Weapons_Type.Pistol;
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Weapon.Weapons_Type Weapon = global::Weapon.Weapons_Type.Pistol;
+
+    void Start() { }
 
     void Update()
     {
-        if(Is_Player)
+        if (Is_Player)
         {
             // Moving
             if (Input.GetKey(KeyCode.A))
@@ -42,7 +47,10 @@ public class Soldier_control : MonoBehaviour
             var weapon = transform.GetChild(1);
             weapon.GetComponent<Weapon>().SetWeapon(Weapon);
             // Get Angle in Radians
-            float AngleRad = Mathf.Atan2(mousePosition.y - transform.position.y, mousePosition.x - transform.position.x);
+            float AngleRad = Mathf.Atan2(
+                mousePosition.y - transform.position.y,
+                mousePosition.x - transform.position.x
+            );
             // Get Angle in Degrees
             float AngleDeg = (180 / Mathf.PI) * AngleRad;
             // Rotate Object
@@ -52,29 +60,43 @@ public class Soldier_control : MonoBehaviour
             if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
             {
                 weapon.GetComponent<Weapon>().timerShoot -= Time.deltaTime;
-                if(weapon.GetComponent<Weapon>().timerShoot < 0)
+                if (weapon.GetComponent<Weapon>().timerShoot < 0)
                 {
                     weapon.GetComponent<Weapon>().Shoot();
                     weapon.GetComponent<Weapon>().RestoreTimer();
                 }
-                
             }
         }
         else
         {
-            var target_pos = Target_Follow.transform.position;
+            var target_pos = new Vector2(
+                Target_Follow.transform.position.x - 1,
+                Target_Follow.transform.position.y
+            );
 
-            if(Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A))
             {
-                transform.position = Vector3.MoveTowards(transform.position, target_pos, -Speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    target_pos,
+                    -Speed * Time.deltaTime
+                );
                 if (CheckJumpLeft())
                     transform.position += new Vector3(-1f, 10f * Time.deltaTime, 0);
             }
             if (Input.GetKey(KeyCode.D))
-                transform.position = Vector3.MoveTowards(transform.position, target_pos, Speed * Time.deltaTime);
-            else if(canFollow)
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    target_pos,
+                    Speed * Time.deltaTime
+                );
+            else if (canFollow)
             {
-                transform.position = Vector3.MoveTowards(transform.position, target_pos, Speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    target_pos,
+                    Speed * Time.deltaTime
+                );
                 if (CheckJumpRight())
                     transform.position += new Vector3(0, 10f * Time.deltaTime, 0);
             }
@@ -96,8 +118,10 @@ public class Soldier_control : MonoBehaviour
 
     private bool CheckJumpRight()
     {
-        return Target_Follow.transform.position.y - transform.position.y > 0 || Target_Follow.transform.position.x - transform.position.x > 5;
+        return Target_Follow.transform.position.y - transform.position.y > 0
+            || Target_Follow.transform.position.x - transform.position.x > 5;
     }
+
     private bool CheckJumpLeft()
     {
         return Target_Follow.transform.position.x - transform.position.x < 1.9f;
@@ -116,18 +140,21 @@ public class Soldier_control : MonoBehaviour
     public void SetControlPlayer()
     {
         Is_Player = true;
+        this.gameObject.tag = "Player";
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.name.Contains("Bullet")) return;
+        if (other.name.Contains("Bullet"))
+            return;
         canFollow = false;
         //collDownFollow = 0.5f;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.name.Contains("Bullet")) return;
+        if (other.name.Contains("Bullet"))
+            return;
         canFollow = true;
     }
 

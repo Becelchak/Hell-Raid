@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Peasant : Enemies
@@ -9,11 +10,21 @@ public class Peasant : Enemies
         base.Attack();
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        // print(this.gameObject);
+        // print(other.tag);
+        if (other.CompareTag("PlayerHitBox"))
         {
-            TakeDamage(attackDamage);
+            Attack();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            print("получил урон");
         }
     }
 }
