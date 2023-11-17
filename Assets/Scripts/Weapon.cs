@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
+        // Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
     }
 
     public void SetWeapon(Weapons_Type weapon)

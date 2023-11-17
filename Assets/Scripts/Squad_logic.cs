@@ -5,31 +5,35 @@ using UnityEngine;
 
 public class Squad_logic : MonoBehaviour
 {
-    [SerializeField] private GameObject camera;
+    [SerializeField]
+    private GameObject camera;
     private List<GameObject> units = new List<GameObject>();
+
     void Start()
     {
-        for(var i = 0; i < transform.childCount; i++)
+        for (var i = 0; i < transform.childCount; i++)
         {
             var child = transform.GetChild(i).gameObject;
             units.Add(child);
         }
     }
 
-    void Update()
-    {
-
-    }
+    void Update() { }
 
     public void AddNewSoldier()
     {
         // If squad full -> do nothing
-        if(units.Count >= 4) return;
+        if (units.Count >= 4)
+            return;
         var lastSoldier = units[^1];
         var newSoldier = Instantiate(lastSoldier);
-        
+
         // Spawn new soldier behind squad and set AI control
-        newSoldier.transform.position = new Vector3(newSoldier.transform.position.x - 5,newSoldier.transform.position.y + 1, newSoldier.transform.position.z);
+        newSoldier.transform.position = new Vector3(
+            newSoldier.transform.position.x - 5,
+            newSoldier.transform.position.y + 1,
+            newSoldier.transform.position.z
+        );
         newSoldier.GetComponent<Soldier_control>().SetTarget(lastSoldier);
         newSoldier.GetComponent<Soldier_control>().SetControlAi();
         // Add new name and set parent -> squad
@@ -42,7 +46,8 @@ public class Squad_logic : MonoBehaviour
 
     public void DeleteFirstSoldier()
     {
-        if(units.Count <= 1 ) return;
+        if (units.Count <= 1)
+            return;
         var firstSoldier = units[0];
         var secondSoldier = units[1];
 
