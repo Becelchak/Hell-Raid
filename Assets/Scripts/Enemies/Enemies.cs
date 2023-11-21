@@ -22,18 +22,21 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     [SerializeField]
     private float attackSpeed;
-    public int attackDamage;
+
+    [SerializeField]
+    protected int attackDamage;
 
     [SerializeField]
     private float speed;
     private float attackTimer;
     public bool playerChasing;
+
+    [SerializeField]
     private Transform playerTransform;
     private NavMeshAgent agent;
 
     private void Awake()
     {
-        playerTransform = FindObjectOfType<Soldier_control>().transform;
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -42,18 +45,16 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     private void Update()
     {
         attackTimer += Time.deltaTime;
-        if (attackTimer >= 1f / attackSpeed)
-        {
-            Attack();
-            print(attackTimer);
-            attackTimer = 0f;
-        }
         Move();
     }
 
     public virtual void Attack()
     {
-        print("Атака");
+        if (attackTimer >= 1f / attackSpeed)
+        {
+            print("Attack");
+            attackTimer = 0f;
+        }
     }
 
     public virtual void TakeDamage(int damageValue)
@@ -66,9 +67,15 @@ public abstract class Enemies : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    public virtual void Move()
+    public virtual void Move() //У некоторых мобов свои маршруты.
     {
         agent.speed = speed;
-        agent.SetDestination(playerTransform.position);
+        agent.SetDestination(
+            new Vector3(
+                playerTransform.position.x,
+                playerTransform.position.y,
+                playerTransform.position.z
+            )
+        );
     }
 }
