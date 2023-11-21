@@ -52,7 +52,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     {
         if (attackTimer >= 1f / attackSpeed)
         {
-            print("Attack");
+            Commander.TakeDamage(attackDamage);
             attackTimer = 0f;
         }
     }

@@ -22,9 +22,10 @@ public class Peasant : Enemies
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        print(other.tag);
         if (other.CompareTag("Bullet"))
         {
-            print("получил урон");
+            TakeDamage(Weapon.damage);
         }
     }
 }

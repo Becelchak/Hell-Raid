@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     private GameObject Bullet;
     private float coolDownShoot = 0;
     public float timerShoot = 0;
-    private int damage = 0;
+    public static int damage = 0;
     private int ammo_in_magazine = 0;
     private int ammo_temp = 0;
     private int count_magazine = 0;
@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour
     {
         uiAmmoCount.text = ammo_temp.ToString();
         uiMagazineCount.text = count_magazine.ToString();
-        Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
+        // Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
     }
 
     public void SetWeapon(Weapons_Type weapon)
