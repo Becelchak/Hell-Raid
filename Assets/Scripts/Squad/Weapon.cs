@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
@@ -20,15 +21,21 @@ public class Weapon : MonoBehaviour
     private int count_magazine = 0;
 
     private float speed_bullet;
+    private Text uiAmmoCount;
+    private Text uiMagazineCount;
 
     void Start()
     {
         SetParameterWeapon();
+        uiAmmoCount = GameObject.Find("Ammo in Magazine").GetComponentInChildren<Text>();
+        uiMagazineCount = GameObject.Find("Magazine").GetComponentInChildren<Text>();
     }
 
     void Update()
     {
-        // Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
+        uiAmmoCount.text = ammo_temp.ToString();
+        uiMagazineCount.text = count_magazine.ToString();
+        Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
     }
 
     public void SetWeapon(Weapons_Type weapon)
@@ -36,7 +43,11 @@ public class Weapon : MonoBehaviour
         var needRefresh = false || Weapon_Type != weapon;
         Weapon_Type = weapon;
         if (needRefresh)
+        {
             SetParameterWeapon();
+            uiAmmoCount = GameObject.Find("Ammo in Magazine").GetComponentInChildren<Text>();
+            uiMagazineCount = GameObject.Find("Magazine").GetComponentInChildren<Text>();
+        }
     }
 
     public void Shoot()
@@ -133,9 +144,10 @@ public class Weapon : MonoBehaviour
                     }
                 }
                 break;
-            default:
-                break;
         }
+
+        uiAmmoCount.text = ammo_temp.ToString();
+        uiMagazineCount.text = count_magazine.ToString();
     }
 
     private void SetParameterWeapon()
