@@ -65,26 +65,30 @@
     <Compile Include="Assets\Scripts\Squad\Squad_logic.cs" />
     <Compile Include="Assets\Scripts\Enemies\Minotaur.cs" />
     <Compile Include="Assets\Scripts\Enemies\Dog.cs" />
+    <Compile Include="Assets\ButtonsFunctions.cs" />
+    <Compile Include="Assets\UiSoldierHud.cs" />
+    <Compile Include="Assets\Scripts\Squad\Soldiers classes\Sniper.cs" />
     <Compile Include="Assets\Scripts\Squad\Bullet.cs" />
     <Compile Include="Assets\Scripts\Enemies\FalsePriest.cs" />
+    <Compile Include="Assets\Scripts\Squad\Soldiers classes\MachineGunner.cs" />
     <Compile Include="Assets\Scripts\Enemies\Rogue.cs" />
     <Compile Include="Assets\Scripts\Squad\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Squad\Soldiers classes\Commander.cs" />
     <Compile Include="Assets\Scripts\Enemies\FatMan.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldier_control.cs" />
     <Compile Include="Assets\Scripts\Enemies\Tree.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemies.cs" />
     <Compile Include="Assets\Scripts\Enemies\Peasant.cs" />
+    <Compile Include="Assets\endLevel.cs" />
     <Compile Include="Assets\Scripts\Enemies\Greedy.cs" />
     <Compile Include="Assets\Scripts\Enemies\Harpy.cs" />
     <Compile Include="Assets\Scripts\Enemies\Raven.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Mage.cs" />
-    <Compile Include="Assets\Scripts\Enemies\Strongman.cs" />
-    <Compile Include="Assets\Scripts\Squad\Soldiers classes\Commander.cs" />
-    <Compile Include="Assets\Scripts\Squad\Soldiers classes\MachineGunner.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Medic.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Mage.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Engineer.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Strongman.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Grenadier.cs" />
-    <Compile Include="Assets\Scripts\Squad\Soldiers classes\Sniper.cs" />
+    <Compile Include="Assets\SquadMenuStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

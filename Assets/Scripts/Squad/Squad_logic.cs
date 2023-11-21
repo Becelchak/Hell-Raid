@@ -6,6 +6,7 @@ using UnityEngine;
 public class Squad_logic : MonoBehaviour
 {
     [SerializeField] private GameObject camera;
+    [SerializeField] private UiSoldierHud hud;
     private List<GameObject> units = new List<GameObject>();
     void Start()
     {
@@ -38,6 +39,7 @@ public class Squad_logic : MonoBehaviour
 
         lastSoldier.GetComponentInChildren<BoxCollider2D>().isTrigger = true;
         units.Add(newSoldier);
+        hud.RefreshSquad();
     }
 
     public void DeleteFirstSoldier()
@@ -52,6 +54,7 @@ public class Squad_logic : MonoBehaviour
 
         units.Remove(firstSoldier);
         Destroy(firstSoldier);
+        hud.RefreshSquad(units);
 
         camera.GetComponent<CinemachineVirtualCamera>().Follow = secondSoldier.transform;
     }

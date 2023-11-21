@@ -16,8 +16,9 @@ public class Soldier_control : MonoBehaviour
     private Weapon.Weapons_Type weapon;
 
     [Header("Class parameter")] 
-    [SerializeField] private SoldierClass type;
-    private float healPoint;
+    [SerializeField] public SoldierClass type;
+    private float healPointTotal;
+    [SerializeField]private float healPointTemp;
 
     void Start()
     {
@@ -26,40 +27,42 @@ public class Soldier_control : MonoBehaviour
             case SoldierClass.Commander:
                 var soldierCLass1 = GetComponent<Commander>();
                 speed = soldierCLass1.moveSpeed;
-                healPoint = soldierCLass1.GetHealPoint();
+                healPointTotal = soldierCLass1.GetHealPoint();
                 weapon = soldierCLass1.GetWeaponType();
                 break;
             case SoldierClass.Engineer:
                 var soldierCLass2 = GetComponent<Engineer>();
                 speed = soldierCLass2.moveSpeed;
-                healPoint = soldierCLass2.GetHealPoint();
+                healPointTotal = soldierCLass2.GetHealPoint();
                 weapon = soldierCLass2.GetWeaponType();
                 break;
             case SoldierClass.Grenadier:
                 var soldierCLass3 = GetComponent<Grenadier>();
                 speed = soldierCLass3.moveSpeed;
-                healPoint = soldierCLass3.GetHealPoint();
+                healPointTotal = soldierCLass3.GetHealPoint();
                 weapon = soldierCLass3.GetWeaponType();
                 break;
             case SoldierClass.Machine_gunner:
                 var soldierCLass4 = GetComponent<MachineGunner>();
                 speed = soldierCLass4.moveSpeed;
-                healPoint = soldierCLass4.GetHealPoint();
+                healPointTotal = soldierCLass4.GetHealPoint();
                 weapon = soldierCLass4.GetWeaponType();
                 break;
             case SoldierClass.Medic:
                 var soldierCLass5 = GetComponent<Medic>();
                 speed = soldierCLass5.moveSpeed;
-                healPoint = soldierCLass5.GetHealPoint();
+                healPointTotal = soldierCLass5.GetHealPoint();
                 weapon = soldierCLass5.GetWeaponType();
                 break;
             case SoldierClass.Sniper:
                 var soldierCLass6 = GetComponent<Sniper>();
                 speed = soldierCLass6.moveSpeed;
-                healPoint = soldierCLass6.GetHealPoint();
+                healPointTotal = soldierCLass6.GetHealPoint();
                 weapon = soldierCLass6.GetWeaponType();
                 break;
         }
+
+        healPointTemp = healPointTotal;
 
     }
 
@@ -131,6 +134,12 @@ public class Soldier_control : MonoBehaviour
         }
     }
 
+    public float GetHealthPoint()
+    {
+        var percent = healPointTotal / 100;
+        Debug.Log($"{healPointTemp / (percent * 100)}");
+        return healPointTemp / (percent * 100);
+    }
     private bool CheckJumpRight()
     {
         return targetFollow.transform.position.y - transform.position.y > 0 || targetFollow.transform.position.x - transform.position.x > 5;
@@ -153,6 +162,11 @@ public class Soldier_control : MonoBehaviour
     public void SetControlPlayer()
     {
         isPlayer = true;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        healPointTemp -= damage;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -182,6 +196,5 @@ public class Soldier_control : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground")
             onGround = true;
-        Debug.Log($"{onGround}");
     }
 }
