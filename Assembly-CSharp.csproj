@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Squad\Weapon.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Commander.cs" />
     <Compile Include="Assets\Scripts\Enemies\FatMan.cs" />
+    <Compile Include="Assets\SquadMenuStatus.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldier_control.cs" />
     <Compile Include="Assets\Scripts\Enemies\Tree.cs" />
     <Compile Include="Assets\Scripts\Enemies\Enemies.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Engineer.cs" />
     <Compile Include="Assets\Scripts\Enemies\Strongman.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Grenadier.cs" />
-    <Compile Include="Assets\SquadMenuStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
