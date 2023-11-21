@@ -4,13 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlayerHitBox
-  - Bullet
+  - Ground
+  - Door
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - 
