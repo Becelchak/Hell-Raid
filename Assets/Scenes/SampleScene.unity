@@ -123,6 +123,64 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &80953020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 80953021}
+  - component: {fileID: 80953022}
+  m_Layer: 0
+  m_Name: HItBox
+  m_TagString: PlayerHitBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &80953021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80953020}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.06910002, z: 0}
+  m_LocalScale: {x: 1.81316, y: 1.8913, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 311201724}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &80953022
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80953020}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &86468637
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +193,6 @@ GameObject:
   - component: {fileID: 86468642}
   - component: {fileID: 86468641}
   - component: {fileID: 86468640}
-  - component: {fileID: 86468639}
   m_Layer: 0
   m_Name: Mid Floor 1
   m_TagString: Ground
@@ -156,24 +213,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &86468639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86468637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &86468640
 Rigidbody2D:
   serializedVersion: 4
@@ -285,7 +326,6 @@ GameObject:
   - component: {fileID: 88397501}
   - component: {fileID: 88397500}
   - component: {fileID: 88397499}
-  - component: {fileID: 88397498}
   m_Layer: 0
   m_Name: Wall L (1)
   m_TagString: Ground
@@ -306,24 +346,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &88397498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 88397496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &88397499
 Rigidbody2D:
   serializedVersion: 4
@@ -720,7 +744,6 @@ GameObject:
   - component: {fileID: 162490107}
   - component: {fileID: 162490106}
   - component: {fileID: 162490105}
-  - component: {fileID: 162490104}
   m_Layer: 0
   m_Name: Mid Floor 2 (5)
   m_TagString: Ground
@@ -741,24 +764,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &162490104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162490102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &162490105
 Rigidbody2D:
   serializedVersion: 4
@@ -930,7 +937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &194410755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1482,7 +1489,6 @@ GameObject:
   - component: {fileID: 220834357}
   - component: {fileID: 220834356}
   - component: {fileID: 220834355}
-  - component: {fileID: 220834354}
   m_Layer: 0
   m_Name: High Floor 2 (1)
   m_TagString: Ground
@@ -1503,24 +1509,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &220834354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220834352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &220834355
 Rigidbody2D:
   serializedVersion: 4
@@ -1700,107 +1690,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236170510}
   m_CullTransparentMesh: 1
---- !u!1 &242479955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 242479956}
-  - component: {fileID: 242479958}
-  - component: {fileID: 242479957}
-  m_Layer: 0
-  m_Name: Walkable (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &242479956
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242479955}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.4859, y: 4.11, z: 0}
-  m_LocalScale: {x: 10.345361, y: 1.615746, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 397511171}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &242479957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242479955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 0
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
---- !u!212 &242479958
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242479955}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &263307563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,8 +1716,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 263307563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8325, y: 2.7165, z: 0}
-  m_LocalScale: {x: 15.008116, y: 1.5632169, z: 1}
+  m_LocalPosition: {x: 3.7048, y: 3.0689, z: 0}
+  m_LocalScale: {x: 28.083185, y: 1.4059756, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
@@ -1990,7 +1879,6 @@ GameObject:
   - component: {fileID: 277179691}
   - component: {fileID: 277179690}
   - component: {fileID: 277179689}
-  - component: {fileID: 277179688}
   m_Layer: 0
   m_Name: Platform 5 (1)
   m_TagString: Ground
@@ -2011,24 +1899,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &277179688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277179686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &277179689
 Rigidbody2D:
   serializedVersion: 4
@@ -2394,7 +2266,7 @@ GameObject:
   - component: {fileID: 311201729}
   m_Layer: 0
   m_Name: Soldier_test
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2413,6 +2285,7 @@ Transform:
   m_Children:
   - {fileID: 1657247476}
   - {fileID: 458026366}
+  - {fileID: 80953021}
   m_Father: {fileID: 1182942667}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2533,8 +2406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce8d2110c4d5104e857ebf91e7f3102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   moveSpeed: 1
-  weapon: 3
+  skillCoolDown: 30
+  squadLogic: {fileID: 0}
+  Weapon: 0
 --- !u!1 &385871412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2423,6 @@ GameObject:
   - component: {fileID: 385871417}
   - component: {fileID: 385871416}
   - component: {fileID: 385871415}
-  - component: {fileID: 385871414}
   m_Layer: 0
   m_Name: Platform 5 (7)
   m_TagString: Ground
@@ -2568,24 +2443,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &385871414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385871412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &385871415
 Rigidbody2D:
   serializedVersion: 4
@@ -2718,7 +2577,6 @@ Transform:
   - {fileID: 209547753}
   - {fileID: 563957784}
   - {fileID: 263307564}
-  - {fileID: 242479956}
   - {fileID: 86468638}
   - {fileID: 1709630628}
   - {fileID: 634723891}
@@ -2763,7 +2621,6 @@ GameObject:
   - component: {fileID: 399669064}
   - component: {fileID: 399669063}
   - component: {fileID: 399669062}
-  - component: {fileID: 399669061}
   m_Layer: 0
   m_Name: Mid Floor 2 (7)
   m_TagString: Ground
@@ -2784,24 +2641,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &399669061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399669059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &399669062
 Rigidbody2D:
   serializedVersion: 4
@@ -2913,7 +2754,6 @@ GameObject:
   - component: {fileID: 443386794}
   - component: {fileID: 443386793}
   - component: {fileID: 443386792}
-  - component: {fileID: 443386791}
   m_Layer: 0
   m_Name: Platform 5 (6)
   m_TagString: Ground
@@ -2934,24 +2774,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &443386791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443386789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &443386792
 Rigidbody2D:
   serializedVersion: 4
@@ -3548,7 +3372,6 @@ GameObject:
   - component: {fileID: 539465742}
   - component: {fileID: 539465741}
   - component: {fileID: 539465740}
-  - component: {fileID: 539465739}
   m_Layer: 0
   m_Name: Mid Floor 2 (3)
   m_TagString: Ground
@@ -3569,24 +3392,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &539465739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539465737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &539465740
 Rigidbody2D:
   serializedVersion: 4
@@ -3924,7 +3731,6 @@ GameObject:
   - component: {fileID: 588890967}
   - component: {fileID: 588890966}
   - component: {fileID: 588890965}
-  - component: {fileID: 588890964}
   m_Layer: 0
   m_Name: Platform 5 (4)
   m_TagString: Ground
@@ -3945,24 +3751,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &588890964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588890962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &588890965
 Rigidbody2D:
   serializedVersion: 4
@@ -4074,7 +3864,6 @@ GameObject:
   - component: {fileID: 634723895}
   - component: {fileID: 634723894}
   - component: {fileID: 634723893}
-  - component: {fileID: 634723892}
   m_Layer: 0
   m_Name: Platform 1
   m_TagString: Ground
@@ -4095,24 +3884,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &634723892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634723890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &634723893
 Rigidbody2D:
   serializedVersion: 4
@@ -4224,7 +3997,6 @@ GameObject:
   - component: {fileID: 637694625}
   - component: {fileID: 637694624}
   - component: {fileID: 637694623}
-  - component: {fileID: 637694622}
   m_Layer: 0
   m_Name: Mid Floor 3 (1)
   m_TagString: Ground
@@ -4245,24 +4017,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &637694622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637694620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &637694623
 Rigidbody2D:
   serializedVersion: 4
@@ -4374,7 +4130,6 @@ GameObject:
   - component: {fileID: 662079274}
   - component: {fileID: 662079273}
   - component: {fileID: 662079272}
-  - component: {fileID: 662079271}
   m_Layer: 0
   m_Name: Mid Floor 2 (1)
   m_TagString: Ground
@@ -4395,24 +4150,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &662079271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662079269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &662079272
 Rigidbody2D:
   serializedVersion: 4
@@ -4524,7 +4263,6 @@ GameObject:
   - component: {fileID: 687685171}
   - component: {fileID: 687685170}
   - component: {fileID: 687685169}
-  - component: {fileID: 687685168}
   m_Layer: 0
   m_Name: Platform 4 (1)
   m_TagString: Ground
@@ -4545,24 +4283,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &687685168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 687685166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &687685169
 Rigidbody2D:
   serializedVersion: 4
@@ -4764,7 +4486,6 @@ GameObject:
   - component: {fileID: 737284180}
   - component: {fileID: 737284179}
   - component: {fileID: 737284178}
-  - component: {fileID: 737284177}
   m_Layer: 0
   m_Name: Platform 3
   m_TagString: Ground
@@ -4785,24 +4506,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &737284177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737284175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &737284178
 Rigidbody2D:
   serializedVersion: 4
@@ -4914,7 +4619,6 @@ GameObject:
   - component: {fileID: 791498486}
   - component: {fileID: 791498485}
   - component: {fileID: 791498484}
-  - component: {fileID: 791498483}
   m_Layer: 0
   m_Name: Platform 2
   m_TagString: Ground
@@ -4935,24 +4639,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &791498483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791498481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &791498484
 Rigidbody2D:
   serializedVersion: 4
@@ -5404,7 +5092,6 @@ GameObject:
   - component: {fileID: 941620632}
   - component: {fileID: 941620631}
   - component: {fileID: 941620630}
-  - component: {fileID: 941620629}
   m_Layer: 0
   m_Name: Mid Floor 3 (3)
   m_TagString: Ground
@@ -5425,24 +5112,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &941620629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941620627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &941620630
 Rigidbody2D:
   serializedVersion: 4
@@ -5630,7 +5301,6 @@ GameObject:
   - component: {fileID: 969955374}
   - component: {fileID: 969955373}
   - component: {fileID: 969955372}
-  - component: {fileID: 969955371}
   m_Layer: 0
   m_Name: Platform 5 (3)
   m_TagString: Ground
@@ -5651,24 +5321,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &969955371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969955369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &969955372
 Rigidbody2D:
   serializedVersion: 4
@@ -6121,6 +5775,7 @@ Transform:
   m_Children:
   - {fileID: 1449651454}
   - {fileID: 2118407282}
+  - {fileID: 1938757464}
   m_Father: {fileID: 1182942667}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6210,7 +5865,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1047965494
@@ -6241,8 +5896,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe0155cf0c1cb243b76a86252ea9080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 150
   moveSpeed: 1
-  weapon: 0
+  skillCoolDown: 45
+  squadLogic: {fileID: 1182942668}
+  Weapon: 0
 --- !u!1 &1092522307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6650,7 +6308,6 @@ GameObject:
   - component: {fileID: 1211548548}
   - component: {fileID: 1211548547}
   - component: {fileID: 1211548546}
-  - component: {fileID: 1211548545}
   m_Layer: 0
   m_Name: Mid Floor 2 (2)
   m_TagString: Ground
@@ -6671,24 +6328,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1211548545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211548543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1211548546
 Rigidbody2D:
   serializedVersion: 4
@@ -7116,13 +6757,14 @@ GameObject:
   - component: {fileID: 1312970820}
   - component: {fileID: 1312970819}
   - component: {fileID: 1312970818}
+  - component: {fileID: 1312970822}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &1312970818
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7160,8 +6802,11 @@ MonoBehaviour:
   health: 100
   attackSpeed: 2
   attackDamage: 10
+  attackRange: 0
   speed: 2
   playerChasing: 0
+  playerTransform: {fileID: 1047965490}
+  soldier: {fileID: 1047965495}
 --- !u!212 &1312970820
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7222,13 +6867,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312970817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.6, y: -1.02, z: 0}
+  m_LocalPosition: {x: -10.6, y: -0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1312970822
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312970817}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &1318085171
 GameObject:
   m_ObjectHideFlags: 0
@@ -7241,7 +6902,6 @@ GameObject:
   - component: {fileID: 1318085176}
   - component: {fileID: 1318085175}
   - component: {fileID: 1318085174}
-  - component: {fileID: 1318085173}
   m_Layer: 0
   m_Name: Platform 5
   m_TagString: Ground
@@ -7262,24 +6922,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1318085173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318085171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1318085174
 Rigidbody2D:
   serializedVersion: 4
@@ -7587,7 +7231,6 @@ GameObject:
   - component: {fileID: 1429618096}
   - component: {fileID: 1429618095}
   - component: {fileID: 1429618094}
-  - component: {fileID: 1429618093}
   m_Layer: 0
   m_Name: Mid Floor 2 (6)
   m_TagString: Ground
@@ -7608,24 +7251,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 31
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1429618093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429618091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1429618094
 Rigidbody2D:
   serializedVersion: 4
@@ -7896,7 +7523,6 @@ GameObject:
   - component: {fileID: 1504025178}
   - component: {fileID: 1504025177}
   - component: {fileID: 1504025176}
-  - component: {fileID: 1504025175}
   m_Layer: 0
   m_Name: Platform 5 (5)
   m_TagString: Ground
@@ -7917,24 +7543,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1504025175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504025173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1504025176
 Rigidbody2D:
   serializedVersion: 4
@@ -8516,7 +8126,6 @@ GameObject:
   - component: {fileID: 1709630632}
   - component: {fileID: 1709630631}
   - component: {fileID: 1709630630}
-  - component: {fileID: 1709630629}
   m_Layer: 0
   m_Name: Mid Floor 2
   m_TagString: Ground
@@ -8537,24 +8146,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1709630629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709630627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1709630630
 Rigidbody2D:
   serializedVersion: 4
@@ -8666,7 +8259,6 @@ GameObject:
   - component: {fileID: 1715086411}
   - component: {fileID: 1715086410}
   - component: {fileID: 1715086409}
-  - component: {fileID: 1715086408}
   m_Layer: 0
   m_Name: Mid Floor 3
   m_TagString: Ground
@@ -8687,24 +8279,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1715086408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1715086406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1715086409
 Rigidbody2D:
   serializedVersion: 4
@@ -9030,7 +8606,6 @@ GameObject:
   - component: {fileID: 1769107613}
   - component: {fileID: 1769107612}
   - component: {fileID: 1769107611}
-  - component: {fileID: 1769107610}
   m_Layer: 0
   m_Name: Mid Floor 2 (4)
   m_TagString: Ground
@@ -9051,24 +8626,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1769107610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769107608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1769107611
 Rigidbody2D:
   serializedVersion: 4
@@ -9256,7 +8815,6 @@ GameObject:
   - component: {fileID: 1800279105}
   - component: {fileID: 1800279104}
   - component: {fileID: 1800279103}
-  - component: {fileID: 1800279102}
   m_Layer: 0
   m_Name: Mid Floor 3 (2)
   m_TagString: Ground
@@ -9277,24 +8835,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1800279102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800279100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1800279103
 Rigidbody2D:
   serializedVersion: 4
@@ -9406,7 +8948,6 @@ GameObject:
   - component: {fileID: 1804630206}
   - component: {fileID: 1804630205}
   - component: {fileID: 1804630204}
-  - component: {fileID: 1804630203}
   m_Layer: 0
   m_Name: Platform 4
   m_TagString: Ground
@@ -9427,24 +8968,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1804630203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804630201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1804630204
 Rigidbody2D:
   serializedVersion: 4
@@ -9716,7 +9241,6 @@ GameObject:
   - component: {fileID: 1870894915}
   - component: {fileID: 1870894914}
   - component: {fileID: 1870894913}
-  - component: {fileID: 1870894912}
   m_Layer: 0
   m_Name: Mid Floor 2 (8)
   m_TagString: Ground
@@ -9737,24 +9261,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1870894912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870894910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &1870894913
 Rigidbody2D:
   serializedVersion: 4
@@ -10078,6 +9586,64 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1938757463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1938757464}
+  - component: {fileID: 1938757465}
+  m_Layer: 0
+  m_Name: HItBox
+  m_TagString: PlayerHitBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1938757464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938757463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0625, y: 0.0391, z: 0}
+  m_LocalScale: {x: 1.8131632, y: 1.891304, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1047965490}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1938757465
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938757463}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1945874113
 GameObject:
   m_ObjectHideFlags: 0
@@ -10380,7 +9946,6 @@ GameObject:
   - component: {fileID: 2107419483}
   - component: {fileID: 2107419482}
   - component: {fileID: 2107419481}
-  - component: {fileID: 2107419480}
   m_Layer: 0
   m_Name: Platform 5 (2)
   m_TagString: Ground
@@ -10401,24 +9966,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 397511171}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2107419480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2107419478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 2
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!50 &2107419481
 Rigidbody2D:
   serializedVersion: 4
@@ -10974,6 +10523,10 @@ PrefabInstance:
     - target: {fileID: 4420171491422176227, guid: db5fedfe011c655468b6751af68dafe3, type: 3}
       propertyPath: m_Name
       value: Bullet origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420171491422176227, guid: db5fedfe011c655468b6751af68dafe3, type: 3}
+      propertyPath: m_TagString
+      value: Bullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5fedfe011c655468b6751af68dafe3, type: 3}
