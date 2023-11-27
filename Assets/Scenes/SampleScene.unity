@@ -937,7 +937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &194410755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2406,8 +2406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce8d2110c4d5104e857ebf91e7f3102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   moveSpeed: 1
-  weapon: 3
+  skillCoolDown: 30
+  squadLogic: {fileID: 0}
+  Weapon: 0
 --- !u!1 &385871412
 GameObject:
   m_ObjectHideFlags: 0
@@ -5893,8 +5896,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe0155cf0c1cb243b76a86252ea9080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 150
   moveSpeed: 1
-  weapon: 0
+  skillCoolDown: 45
+  squadLogic: {fileID: 1182942668}
+  Weapon: 0
 --- !u!1 &1092522307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6796,9 +6802,11 @@ MonoBehaviour:
   health: 100
   attackSpeed: 2
   attackDamage: 10
+  attackRange: 0
   speed: 2
   playerChasing: 0
   playerTransform: {fileID: 1047965490}
+  soldier: {fileID: 1047965495}
 --- !u!212 &1312970820
 SpriteRenderer:
   m_ObjectHideFlags: 0

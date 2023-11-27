@@ -26,6 +26,7 @@ public class Soldier_control : MonoBehaviour
 
     [SerializeField]
     private float healPointTemp;
+    private Rigidbody2D rb;
 
     void Start()
     {
@@ -33,43 +34,44 @@ public class Soldier_control : MonoBehaviour
         {
             case SoldierClass.Commander:
                 var soldierCLass1 = GetComponent<Commander>();
-                speed = soldierCLass1.moveSpeed;
-                healPointTotal = soldierCLass1.GetHealPoint();
-                weapon = soldierCLass1.GetWeaponType();
+                speed = soldierCLass1.MoveSpeed;
+                healPointTotal = soldierCLass1.Health;
+                weapon = soldierCLass1.Weapon;
                 break;
             case SoldierClass.Engineer:
                 var soldierCLass2 = GetComponent<Engineer>();
-                speed = soldierCLass2.moveSpeed;
-                healPointTotal = soldierCLass2.GetHealPoint();
-                weapon = soldierCLass2.GetWeaponType();
+                speed = soldierCLass2.MoveSpeed;
+                healPointTotal = soldierCLass2.Health;
+                weapon = soldierCLass2.Weapon;
                 break;
             case SoldierClass.Grenadier:
                 var soldierCLass3 = GetComponent<Grenadier>();
-                speed = soldierCLass3.moveSpeed;
-                healPointTotal = soldierCLass3.GetHealPoint();
-                weapon = soldierCLass3.GetWeaponType();
+                speed = soldierCLass3.MoveSpeed;
+                healPointTotal = soldierCLass3.Health;
+                weapon = soldierCLass3.Weapon;
                 break;
             case SoldierClass.Machine_gunner:
                 var soldierCLass4 = GetComponent<MachineGunner>();
-                speed = soldierCLass4.moveSpeed;
-                healPointTotal = soldierCLass4.GetHealPoint();
-                weapon = soldierCLass4.GetWeaponType();
+                speed = soldierCLass4.MoveSpeed;
+                healPointTotal = soldierCLass4.Health;
+                weapon = soldierCLass4.Weapon;
                 break;
             case SoldierClass.Medic:
                 var soldierCLass5 = GetComponent<Medic>();
-                speed = soldierCLass5.moveSpeed;
-                healPointTotal = soldierCLass5.GetHealPoint();
-                weapon = soldierCLass5.GetWeaponType();
+                speed = soldierCLass5.MoveSpeed;
+                healPointTotal = soldierCLass5.Health;
+                weapon = soldierCLass5.Weapon;
                 break;
             case SoldierClass.Sniper:
                 var soldierCLass6 = GetComponent<Sniper>();
-                speed = soldierCLass6.moveSpeed;
-                healPointTotal = soldierCLass6.GetHealPoint();
-                weapon = soldierCLass6.GetWeaponType();
+                speed = soldierCLass6.MoveSpeed;
+                healPointTotal = soldierCLass6.Health;
+                weapon = soldierCLass6.Weapon;
                 break;
         }
 
         healPointTemp = healPointTotal;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
