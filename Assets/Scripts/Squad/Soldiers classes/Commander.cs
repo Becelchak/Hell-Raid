@@ -4,4 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking.Types;
 
-public class Commander : Soldier { }
+public class Commander : Soldier
+{
+    protected override void UseSkill()
+    {
+
+    }
+}
