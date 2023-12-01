@@ -9,18 +9,23 @@ public class Bullet : MonoBehaviour
     private Vector3 directionMove;
     private float speed;
     private float angleDirection;
+    private Rigidbody2D bulletBody;
 
-    void Start() { }
+    void Start()
+    {
+        self = gameObject;
+        bulletBody = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        if (self.transform.position == directionMove)
-            Destroy(self);
-        self.transform.position = Vector3.MoveTowards(
-            self.transform.position,
-            directionMove,
-            speed * Time.deltaTime
-        );
+        //self.transform.position = Vector3.MoveTowards(
+        //    self.transform.position,
+        //    directionMove,
+        //    speed * Time.deltaTime
+        //);
+        gameObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
+        //bulletBody.AddRelativeForce(new Vector2(directionMove.x,directionMove.y) * speed * Time.deltaTime, ForceMode2D.Impulse);
         Destroy(self, 5f);
     }
 
@@ -36,8 +41,7 @@ public class Bullet : MonoBehaviour
         // Get Angle in Radians
         var angleRad = Mathf.Atan2(
             direction.y - transform.position.y,
-            direction.x - transform.position.x
-        );
+            direction.x - transform.position.x);
         // Get Angle in Degrees
         angleDirection = (180 / Mathf.PI) * angleRad;
         // Rotate Object

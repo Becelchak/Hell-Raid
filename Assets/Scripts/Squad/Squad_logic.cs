@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Squad_logic : MonoBehaviour
 {
     [SerializeField] private GameObject camera;
-    [SerializeField] private UiSoldierHud hud;
+    [SerializeField] [CanBeNull] private UiSoldierHud hud;
     private List<GameObject> units = new List<GameObject>();
     void Start()
     {
@@ -51,6 +52,7 @@ public class Squad_logic : MonoBehaviour
         // Delegate control on unit to player
         secondSoldier.GetComponent<Soldier_control>().SetControlPlayer();
         secondSoldier.GetComponent<Soldier_control>().SetTarget(null);
+        secondSoldier.tag = "Player";
 
         units.Remove(firstSoldier);
         Destroy(firstSoldier);

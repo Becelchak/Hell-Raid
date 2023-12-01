@@ -155,7 +155,7 @@ public class Weapon : MonoBehaviour
         switch (Weapon_Type)
         {
             case Weapons_Type.Pistol:
-                speed_bullet = 14f;
+                speed_bullet = 7f;
                 coolDownShoot = 0.5f;
                 damage = 10;
 
@@ -164,7 +164,7 @@ public class Weapon : MonoBehaviour
                 count_magazine = 3;
                 break;
             case Weapons_Type.Shoot_Gun:
-                speed_bullet = 16f;
+                speed_bullet = 8f;
                 coolDownShoot = 1f;
                 damage = 10;
 
@@ -174,7 +174,7 @@ public class Weapon : MonoBehaviour
                 break;
             case Weapons_Type.Heavy_Machine_Gun:
                 var array = new int[] { 5, 10, 15 };
-                speed_bullet = 20f;
+                speed_bullet = 10f;
                 coolDownShoot = 0.17f;
                 damage = array[Random.Range(0, 2)];
 
@@ -183,7 +183,7 @@ public class Weapon : MonoBehaviour
                 count_magazine = 2;
                 break;
             case Weapons_Type.Little_Machine_Gun:
-                speed_bullet = 22f;
+                speed_bullet = 11f;
                 coolDownShoot = 0.2f;
                 damage = 7;
 
@@ -192,7 +192,7 @@ public class Weapon : MonoBehaviour
                 count_magazine = 2;
                 break;
             case Weapons_Type.Sniper_Rifle:
-                speed_bullet = 30f;
+                speed_bullet = 15f;
                 coolDownShoot = 1.5f;
                 damage = 80;
 
@@ -201,7 +201,7 @@ public class Weapon : MonoBehaviour
                 count_magazine = 3;
                 break;
             case Weapons_Type.Grenade_Launcher:
-                speed_bullet = 8f;
+                speed_bullet = 4f;
                 coolDownShoot = 1f;
                 damage = 50;
 
@@ -320,6 +320,11 @@ public class Weapon : MonoBehaviour
         // Bullet size and instantiate 'Bullet' component
         bullet.transform.localScale = new Vector3(1f, 1f, 1);
         bullet.AddComponent<Bullet>().Instantiate(bullet, mousePosition, speed_bullet);
+    }
+
+    public void AddMagazine()
+    {
+        count_magazine += 1;
     }
 
     public enum Weapons_Type

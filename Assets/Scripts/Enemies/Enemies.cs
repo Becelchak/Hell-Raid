@@ -56,6 +56,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     public virtual void Attack()
     {
+        // TODO Call with a target
         if (attackTimer >= 1f / attackSpeed)
         {
             soldier.TakeDamage(attackDamage);

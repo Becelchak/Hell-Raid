@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +27,9 @@ public class Soldier_control : MonoBehaviour
 
     [SerializeField]
     private float healPointTemp;
-    private Rigidbody2D rb;
+    private Rigidbody2D rigBody;
+
+    private Soldier soldier;
 
     void Start()
     {
@@ -71,7 +74,8 @@ public class Soldier_control : MonoBehaviour
         }
 
         healPointTemp = healPointTotal;
-        rb = GetComponent<Rigidbody2D>();
+        soldier = GetComponent<Soldier>();
+        rigBody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -79,19 +83,14 @@ public class Soldier_control : MonoBehaviour
         if (isPlayer)
         {
             // Moving
-            if (Input.GetKey(KeyCode.A))
+            var axisX = Input.GetAxisRaw("Horizontal");
+            rigBody.velocity = new Vector2(axisX * speed * 5, rigBody.velocity.y);
+
+            if (Input.GetButtonDown("Jump") && onGround)
             {
-                transform.position += new Vector3(-speed * 5 * Time.deltaTime, 0, 0);
+                Jump();
             }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.position += new Vector3(speed * 5 * Time.deltaTime, 0, 0);
-            }
-            if (Input.GetKey(KeyCode.Space) && onGround)
-            {
-                transform.position += new Vector3(0, 2f, 0);
-                onGround = false;
-            }
+
             // Mouse control
             var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z += Camera.main.nearClipPlane;
@@ -131,16 +130,16 @@ public class Soldier_control : MonoBehaviour
                 transform.position = Vector3.MoveTowards(
                     transform.position,
                     target_pos,
-                    -speed * 5 * Time.deltaTime
+                    -speed * 3 * Time.deltaTime
                 );
-                if (CheckJumpLeft())
-                    transform.position += new Vector3(-1f, 10f * Time.deltaTime, 0);
+                //if (CheckJumpLeft())
+                //    transform.position = new Vector3(target_pos.x - 2f, transform.position.y +2f, 0);
             }
             if (Input.GetKey(KeyCode.D))
                 transform.position = Vector3.MoveTowards(
                     transform.position,
                     target_pos,
-                    speed * 5 * Time.deltaTime
+                    speed * 3 * Time.deltaTime
                 );
             else if (canFollow)
             {
@@ -149,30 +148,47 @@ public class Soldier_control : MonoBehaviour
                     target_pos,
                     speed * 5 * Time.deltaTime
                 );
-                if (CheckJumpRight())
-                    transform.position += new Vector3(0, 10f * Time.deltaTime, 0);
+                //if (CheckJumpRight())
+                //    transform.position = new Vector3(target_pos.x - 2f, transform.position.y + 2f, 0);
             }
+            if(CkeckTargetFarAway())
+                transform.position = new Vector3(target_pos.x - 2f, target_pos.y + 2f, 0);
         }
+
+        healPointTemp = soldier.Health;
     }
 
     public float GetHealthPoint()
     {
         var percent = healPointTotal / 100;
-        // Debug.Log($"{healPointTemp / (percent * 100)}");
+        //Debug.Log($"{healPointTemp / (percent * 100)}");
         return healPointTemp / (percent * 100);
     }
 
+    private void Jump()
+    {
+        rigBody.AddForce(new Vector2(0f, speed * 450));
+        onGround = false;
+    }
     private bool CheckJumpRight()
     {
         return targetFollow.transform.position.y - transform.position.y > 0
-            || targetFollow.transform.position.x - transform.position.x > 5;
+            || targetFollow.transform.position.x - transform.position.x > 4;
     }
 
     private bool CheckJumpLeft()
     {
-        return targetFollow.transform.position.x - transform.position.x < 1.9f;
+        return targetFollow.transform.position.x - transform.position.x < 2f;
     }
 
+    private bool CkeckTargetFarAway()
+    {
+        //Debug.Log($"X = {Math.Abs(targetFollow.transform.position.x - transform.position.x)}");
+        //Debug.Log($"Y = {Math.Abs(targetFollow.transform.position.y - transform.position.y)}");
+
+        return Math.Abs(targetFollow.transform.position.y - transform.position.y) > 2
+               || Math.Abs(targetFollow.transform.position.x - transform.position.x) > 6;
+    }
     public void SetTarget(GameObject target)
     {
         targetFollow = target;
@@ -188,21 +204,28 @@ public class Soldier_control : MonoBehaviour
         isPlayer = true;
     }
 
-    public void TakeDamage(float damage)
-    {
-        healPointTemp -= damage;
-    }
+    //public void TakeDamage(float damage)
+    //{
+    //    healPointTemp -= damage;
+    //}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name.Contains("Bullet"))
+        if (other.name.Contains("Soldier"))
             return;
         canFollow = false;
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (!other.name.Contains("Soldier"))
+            return;
+        canFollow = true;
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.name.Contains("Bullet"))
+        if (!other.name.Contains("Soldier"))
             return;
         canFollow = true;
     }

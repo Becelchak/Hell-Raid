@@ -13,6 +13,12 @@ public abstract class Soldier : MonoBehaviour, IDamageable
     [SerializeField]
     private float skillCoolDown;
 
+    private float skillTimer
+    {
+        get => skillCoolDown;
+        set { }
+    }
+
     [SerializeField]
     private Squad_logic squadLogic;
     public int Health
@@ -25,7 +31,6 @@ public abstract class Soldier : MonoBehaviour, IDamageable
                 Die();
         }
     }
-
     public float MoveSpeed
     {
         get => moveSpeed;
@@ -35,9 +40,25 @@ public abstract class Soldier : MonoBehaviour, IDamageable
     [Header("Weapon parameter")]
     public Weapon.Weapons_Type Weapon;
 
+    void Update()
+    {
+        skillTimer -= Time.deltaTime;
+        if (skillTimer <= 0)
+        {
+            skillTimer = skillCoolDown;
+            UseSkill();
+        }
+    }
+
     public void TakeDamage(int damageValue)
     {
         Health -= damageValue;
+        Debug.Log($"{Health}");
+    }
+
+    protected virtual void UseSkill()
+    {
+
     }
 
     public void Die()

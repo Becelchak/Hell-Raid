@@ -15,4 +15,9 @@ public class ButtonsFunctions : MonoBehaviour
         var menu = GameObject.Find("PanelSoldiersPick");
         menu.SetActive(false);
     }
+
+    public void LoadLobbyScene()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
 }
