@@ -11,6 +11,9 @@ public class Bullet : MonoBehaviour
     private float angleDirection;
     private Rigidbody2D bulletBody;
 
+    private float timerGrenade = 2f;
+    private List<GameObject> targets = new List<GameObject>();
+
     void Start()
     {
         self = gameObject;
@@ -19,20 +22,26 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        //self.transform.position = Vector3.MoveTowards(
-        //    self.transform.position,
-        //    directionMove,
-        //    speed * Time.deltaTime
-        //);
-        gameObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
-        //bulletBody.AddRelativeForce(new Vector2(directionMove.x,directionMove.y) * speed * Time.deltaTime, ForceMode2D.Impulse);
-        Destroy(self, 5f);
+        if (gameObject.tag == "Bullet")
+        {
+            gameObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
+            Destroy(self, 2f);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        
+        if (gameObject.tag == "Grenade")
+        {
+            gameObject.transform.Translate(Vector3.right * speed * 2 * Time.deltaTime + Vector3.down * speed * Time.deltaTime);
+            Explosion();
+        }
     }
 
     public void Instantiate(GameObject bullet, Vector3 direction, float speed)
     {
         self = bullet;
-        self.tag = "Bullet";
         directionMove = new Vector3(direction.x, direction.y, 1);
         this.speed = speed;
 
@@ -46,5 +55,36 @@ public class Bullet : MonoBehaviour
         angleDirection = (180 / Mathf.PI) * angleRad;
         // Rotate Object
         transform.rotation = Quaternion.Euler(0, 0, angleDirection);
+    }
+
+    private void Explosion()
+    {
+        timerGrenade -= Time.fixedDeltaTime;
+        if(timerGrenade <= 0)
+        {
+            foreach (var target in targets)
+            {
+                if(target.tag == "Player")
+                    target.GetComponent<Soldier>().TakeDamage(50);
+            }
+            Destroy(self);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag is "Player")
+            targets.Add(other.gameObject);
+        if(other.gameObject.tag is "Enemy")
+        {
+            other.GetComponent<Enemies>().TakeDamage(50);
+            Destroy(self);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag is "Player")
+            targets.Remove(other.gameObject);
     }
 }

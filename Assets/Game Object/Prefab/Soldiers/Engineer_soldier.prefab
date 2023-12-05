@@ -108,8 +108,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073707221381325}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5000002, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073707221381325}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -368,9 +368,9 @@ GameObject:
   - component: {fileID: 6845073708007054950}
   - component: {fileID: 6845073708007054949}
   - component: {fileID: 6845073708007054948}
-  - component: {fileID: 551747191157455468}
+  - component: {fileID: 1948332607283188784}
   m_Layer: 0
-  m_Name: Sniper
+  m_Name: Engineer_soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,7 +401,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073708007054945}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -474,7 +474,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073708007054945}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -497,9 +497,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   targetFollow: {fileID: 0}
-  type: 5
+  type: 1
   healPointTemp: 0
---- !u!114 &551747191157455468
+--- !u!114 &1948332607283188784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,11 +508,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6845073708007054945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4abdf85d92f1f81429b42e74ffa8378b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1242ce549217b2345b02f0b9a9719dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  moveSpeed: 0.5
-  skillCoolDown: 50
+  health: 125
+  moveSpeed: 1
+  skillCoolDown: 120
   squadLogic: {fileID: 0}
-  Weapon: 4
+  Weapon: 2

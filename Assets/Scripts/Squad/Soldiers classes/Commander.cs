@@ -8,6 +8,7 @@ public class Commander : Soldier
 {
     protected override void UseSkill()
     {
-
+        var squad = GetSquad();
+        squad.AddAmmoSquad();
     }
 }

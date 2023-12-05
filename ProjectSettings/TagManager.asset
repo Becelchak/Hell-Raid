@@ -8,6 +8,8 @@ TagManager:
   - Door
   - PlayerHitBox
   - Bullet
+  - Grenade
+  - Enemy
   layers:
   - Default
   - TransparentFX

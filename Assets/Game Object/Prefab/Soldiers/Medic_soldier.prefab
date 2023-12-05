@@ -108,8 +108,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073707221381325}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.5000002, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073707221381325}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -368,9 +368,9 @@ GameObject:
   - component: {fileID: 6845073708007054950}
   - component: {fileID: 6845073708007054949}
   - component: {fileID: 6845073708007054948}
-  - component: {fileID: -1258874351703418314}
+  - component: {fileID: 6845073708007054952}
   m_Layer: 0
-  m_Name: Grenadier
+  m_Name: Medic_soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,7 +401,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073708007054945}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -474,7 +474,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073708007054945}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -497,9 +497,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   targetFollow: {fileID: 0}
-  type: 2
+  type: 4
   healPointTemp: 0
---- !u!114 &-1258874351703418314
+--- !u!114 &6845073708007054952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,11 +508,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6845073708007054945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6489227e3a04b2d48a0a5bde55127a39, type: 3}
+  m_Script: {fileID: 11500000, guid: 39dd88b5fa3ee744c9f88f4758ad03ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
-  moveSpeed: 0.9
-  skillCoolDown: 60
+  health: 125
+  moveSpeed: 1.1
+  skillCoolDown: 120
   squadLogic: {fileID: 0}
-  Weapon: 5
+  Weapon: 1
