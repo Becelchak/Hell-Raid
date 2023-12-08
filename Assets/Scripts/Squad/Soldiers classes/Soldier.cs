@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Soldier : MonoBehaviour, IDamageable
 {
@@ -11,16 +12,15 @@ public abstract class Soldier : MonoBehaviour, IDamageable
     private float moveSpeed;
 
     [SerializeField]
-    private float skillCoolDown;
-
-    private float skillTimer
-    {
-        get => skillCoolDown;
-        set { }
-    }
+    protected float skillCoolDown;
+    protected float skillTimer;
+    protected bool canUseSkill = false;
+    protected Image skillIcon;
 
     [SerializeField]
     private Squad_logic squadLogic;
+
+    protected Soldier_control control;
     public int Health
     {
         get => health;
@@ -31,6 +31,9 @@ public abstract class Soldier : MonoBehaviour, IDamageable
                 Die();
         }
     }
+
+    public int maxHealth;
+
     public float MoveSpeed
     {
         get => moveSpeed;
@@ -40,13 +43,33 @@ public abstract class Soldier : MonoBehaviour, IDamageable
     [Header("Weapon parameter")]
     public Weapon.Weapons_Type Weapon;
 
+    void Start()
+    {
+        skillTimer = skillCoolDown;
+        control = GetComponent<Soldier_control>();
+        skillIcon = GameObject.Find("IconSkill").GetComponent<Image>();
+        skillIcon.fillAmount = 0;
+        maxHealth = health;
+    }
     void Update()
     {
-        skillTimer -= Time.deltaTime;
-        if (skillTimer <= 0)
+        if(control.IsPlayerControl())
         {
-            skillTimer = skillCoolDown;
-            UseSkill();
+            if (!canUseSkill)
+            {
+                skillTimer -= Time.deltaTime;
+                if (skillTimer <= 0)
+                    canUseSkill = true;
+                //skillIcon.fillAmount += 1 / skillCoolDown * Time.deltaTime;
+                skillIcon.fillAmount = 1 - skillTimer / (skillCoolDown / 100 * 100);
+            }
+            if (canUseSkill && Input.GetKeyDown(KeyCode.R))
+            {
+                skillTimer = skillCoolDown;
+                UseSkill();
+                canUseSkill = false;
+                skillIcon.fillAmount = 0;
+            }
         }
     }
 
@@ -64,5 +87,15 @@ public abstract class Soldier : MonoBehaviour, IDamageable
     public void Die()
     {
         squadLogic.DeleteFirstSoldier();
+    }
+
+    protected Squad_logic GetSquad()
+    {
+        return squadLogic;
+    }
+
+    public void ReturnFullHealth()
+    {
+        Health = maxHealth;
     }
 }

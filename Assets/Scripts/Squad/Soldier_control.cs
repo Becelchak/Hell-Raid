@@ -15,7 +15,7 @@ public class Soldier_control : MonoBehaviour
 
     [SerializeField]
     private GameObject targetFollow;
-    private bool canFollow = true;
+    //private bool canFollow = true;
     private bool onGround = true;
 
     private Weapon.Weapons_Type weapon;
@@ -30,6 +30,7 @@ public class Soldier_control : MonoBehaviour
     private Rigidbody2D rigBody;
 
     private Soldier soldier;
+    private Squad_logic squadLogic;
 
     void Start()
     {
@@ -76,6 +77,7 @@ public class Soldier_control : MonoBehaviour
         healPointTemp = healPointTotal;
         soldier = GetComponent<Soldier>();
         rigBody = GetComponent<Rigidbody2D>();
+        squadLogic = GetComponentInParent<Squad_logic>();
     }
 
     void Update()
@@ -117,42 +119,61 @@ public class Soldier_control : MonoBehaviour
                 }
             }
             weapon.timerShoot -= Time.deltaTime;
+
+            //Change unit
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+                squadLogic.ChangeSoldier(0);
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+                squadLogic.ChangeSoldier(1);
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+                squadLogic.ChangeSoldier(2);
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+                squadLogic.ChangeSoldier(3);
+
+
         }
         else
         {
             var target_pos = targetFollow.transform.position;
+            transform.position = target_pos;
 
-            var weapon = transform.GetChild(1).GetComponent<Weapon>();
-            weapon.SetWeapon(this.weapon);
+            #region
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    target_pos,
-                    -speed * 3 * Time.deltaTime
-                );
-                //if (CheckJumpLeft())
-                //    transform.position = new Vector3(target_pos.x - 2f, transform.position.y +2f, 0);
-            }
-            if (Input.GetKey(KeyCode.D))
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    target_pos,
-                    speed * 3 * Time.deltaTime
-                );
-            else if (canFollow)
-            {
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    target_pos,
-                    speed * 5 * Time.deltaTime
-                );
-                //if (CheckJumpRight())
-                //    transform.position = new Vector3(target_pos.x - 2f, transform.position.y + 2f, 0);
-            }
-            if(CkeckTargetFarAway())
-                transform.position = new Vector3(target_pos.x - 2f, target_pos.y + 2f, 0);
+            //var target_pos = targetFollow.transform.position;
+
+            //var weapon = transform.GetChild(1).GetComponent<Weapon>();
+            //weapon.SetWeapon(this.weapon);
+
+            //if (Input.GetKey(KeyCode.A))
+            //{
+            //    transform.position = Vector3.MoveTowards(
+            //        transform.position,
+            //        target_pos,
+            //        -speed * 3 * Time.deltaTime
+            //    );
+            //    //if (CheckJumpLeft())
+            //    //    transform.position = new Vector3(target_pos.x - 2f, transform.position.y +2f, 0);
+            //}
+            //if (Input.GetKey(KeyCode.D))
+            //    transform.position = Vector3.MoveTowards(
+            //        transform.position,
+            //        target_pos,
+            //        speed * 3 * Time.deltaTime
+            //    );
+            //else if (canFollow)
+            //{
+            //    transform.position = Vector3.MoveTowards(
+            //        transform.position,
+            //        target_pos,
+            //        speed * 5 * Time.deltaTime
+            //    );
+            //    //if (CheckJumpRight())
+            //    //    transform.position = new Vector3(target_pos.x - 2f, transform.position.y + 2f, 0);
+            //}
+            //if(CkeckTargetFarAway())
+            //    transform.position = new Vector3(target_pos.x - 2f, target_pos.y + 2f, 0);
+
+            #endregion
         }
 
         healPointTemp = soldier.Health;
@@ -161,7 +182,6 @@ public class Soldier_control : MonoBehaviour
     public float GetHealthPoint()
     {
         var percent = healPointTotal / 100;
-        //Debug.Log($"{healPointTemp / (percent * 100)}");
         return healPointTemp / (percent * 100);
     }
 
@@ -170,25 +190,7 @@ public class Soldier_control : MonoBehaviour
         rigBody.AddForce(new Vector2(0f, speed * 450));
         onGround = false;
     }
-    private bool CheckJumpRight()
-    {
-        return targetFollow.transform.position.y - transform.position.y > 0
-            || targetFollow.transform.position.x - transform.position.x > 4;
-    }
 
-    private bool CheckJumpLeft()
-    {
-        return targetFollow.transform.position.x - transform.position.x < 2f;
-    }
-
-    private bool CkeckTargetFarAway()
-    {
-        //Debug.Log($"X = {Math.Abs(targetFollow.transform.position.x - transform.position.x)}");
-        //Debug.Log($"Y = {Math.Abs(targetFollow.transform.position.y - transform.position.y)}");
-
-        return Math.Abs(targetFollow.transform.position.y - transform.position.y) > 2
-               || Math.Abs(targetFollow.transform.position.x - transform.position.x) > 6;
-    }
     public void SetTarget(GameObject target)
     {
         targetFollow = target;
@@ -204,30 +206,9 @@ public class Soldier_control : MonoBehaviour
         isPlayer = true;
     }
 
-    //public void TakeDamage(float damage)
-    //{
-    //    healPointTemp -= damage;
-    //}
-
-    void OnTriggerEnter2D(Collider2D other)
+    public bool IsPlayerControl()
     {
-        if (other.name.Contains("Soldier"))
-            return;
-        canFollow = false;
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (!other.name.Contains("Soldier"))
-            return;
-        canFollow = true;
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (!other.name.Contains("Soldier"))
-            return;
-        canFollow = true;
+        return isPlayer;
     }
 
     public enum SoldierClass

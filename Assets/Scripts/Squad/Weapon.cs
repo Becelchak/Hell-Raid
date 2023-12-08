@@ -27,15 +27,21 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         SetParameterWeapon();
-        uiAmmoCount = GameObject.Find("Ammo in Magazine").GetComponentInChildren<Text>();
-        uiMagazineCount = GameObject.Find("Magazine").GetComponentInChildren<Text>();
+        if(Weapon_Type != Weapons_Type.Drone_gun)
+        {
+            uiAmmoCount = GameObject.Find("Ammo in Magazine").GetComponentInChildren<Text>();
+            uiMagazineCount = GameObject.Find("Magazine").GetComponentInChildren<Text>();
+        }
     }
 
     void Update()
     {
-        uiAmmoCount.text = ammo_temp.ToString();
-        uiMagazineCount.text = count_magazine.ToString();
-        // Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
+        if (Weapon_Type != Weapons_Type.Drone_gun)
+        {
+            uiAmmoCount.text = ammo_temp.ToString();
+            uiMagazineCount.text = count_magazine.ToString();
+        }
+        //Debug.Log($"Ammo : {ammo_temp}  Magazine : {count_magazine}");
     }
 
     public void SetWeapon(Weapons_Type weapon)
@@ -130,10 +136,25 @@ public class Weapon : MonoBehaviour
                 }
                 break;
             case Weapons_Type.Grenade_Launcher:
+                 if (ammo_temp > 0)
+                 {
+                     ammo_temp -= 1;
+                     ShootGrenadeLauncher();
+                 }
+                 else
+                 {
+                     if (count_magazine > 0)
+                     {
+                         ammo_temp = ammo_in_magazine;
+                         count_magazine -= 1;
+                     }
+                 }
+                 break;
+            case Weapons_Type.Drone_gun:
                 if (ammo_temp > 0)
                 {
                     ammo_temp -= 1;
-                    ShootGrenade_Launcher();
+                    ShootDroneGun();
                 }
                 else
                 {
@@ -146,8 +167,11 @@ public class Weapon : MonoBehaviour
                 break;
         }
 
-        uiAmmoCount.text = ammo_temp.ToString();
-        uiMagazineCount.text = count_magazine.ToString();
+        if (Weapon_Type != Weapons_Type.Drone_gun)
+        {
+            uiAmmoCount.text = ammo_temp.ToString();
+            uiMagazineCount.text = count_magazine.ToString();
+        }
     }
 
     private void SetParameterWeapon()
@@ -209,6 +233,15 @@ public class Weapon : MonoBehaviour
                 ammo_temp = ammo_in_magazine;
                 count_magazine = 5;
                 break;
+            case Weapons_Type.Drone_gun:
+                speed_bullet = 7f;
+                coolDownShoot = 0.5f;
+                damage = 3;
+
+                ammo_in_magazine = 99;
+                ammo_temp = ammo_in_magazine;
+                count_magazine = 10;
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -223,6 +256,7 @@ public class Weapon : MonoBehaviour
     {
         // Create new bullet in start_fire_position
         var bullet = Instantiate(Bullet);
+        bullet.tag = "Bullet";
         bullet.transform.position = transform.GetChild(1).position;
         // Direction fly for bullet
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -237,6 +271,7 @@ public class Weapon : MonoBehaviour
     {
         // Create new bullet in start_fire_position
         var bullet = Instantiate(Bullet);
+        bullet.tag = "Bullet";
         bullet.transform.position = transform.GetChild(1).position;
         // Direction fly for bullet
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -244,14 +279,14 @@ public class Weapon : MonoBehaviour
 
         if (dir == "Top")
         {
-            mousePosition.x += (float)Math.Sin(mousePosition.x);
-            mousePosition.y += (float)Math.Cos(mousePosition.y);
+            mousePosition.x += (float)Math.Sin(mousePosition.x) * 2;
+            mousePosition.y += (float)Math.Cos(mousePosition.y) * 2;
         }
 
         if (dir == "Bottom")
         {
-            mousePosition.x -= (float)Math.Sin(mousePosition.x);
-            mousePosition.y -= (float)Math.Cos(mousePosition.y);
+            mousePosition.x -= (float)Math.Sin(mousePosition.x) * 2;
+            mousePosition.y -= (float)Math.Cos(mousePosition.y) * 2;
         }
 
         // Bullet size and instantiate 'Bullet' component
@@ -270,6 +305,7 @@ public class Weapon : MonoBehaviour
     {
         // Create new bullet in start_fire_position
         var bullet = Instantiate(Bullet);
+        bullet.tag = "Bullet";
         bullet.transform.position = transform.GetChild(1).position;
         // Direction fly for bullet
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -284,6 +320,7 @@ public class Weapon : MonoBehaviour
     {
         // Create new bullet in start_fire_position
         var bullet = Instantiate(Bullet);
+        bullet.tag = "Bullet";
         bullet.transform.position = transform.GetChild(1).position;
         // Direction fly for bullet
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -298,6 +335,7 @@ public class Weapon : MonoBehaviour
     {
         // Create new bullet in start_fire_position
         var bullet = Instantiate(Bullet);
+        bullet.tag = "Bullet";
         bullet.transform.position = transform.GetChild(1).position;
         // Direction fly for bullet
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -308,17 +346,41 @@ public class Weapon : MonoBehaviour
         bullet.AddComponent<Bullet>().Instantiate(bullet, mousePosition, speed_bullet);
     }
 
-    private void ShootGrenade_Launcher()
+    public void ShootGrenadeLauncher(Vector2 position = new Vector2())
     {
         // Create new bullet in start_fire_position
         var bullet = Instantiate(Bullet);
         bullet.transform.position = transform.GetChild(1).position;
+        bullet.tag = "Grenade";
+
+        var direction = new Vector3();
+
+        if (position == new Vector2())
+        {
+            // Direction fly for bullet
+            var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z += Camera.main.nearClipPlane;
+            direction = mousePosition;
+        }
+        else
+        {
+            direction = position;
+        }
+        bullet.AddComponent<Bullet>().Instantiate(bullet, direction, speed_bullet);
+    }
+
+    private void ShootDroneGun()
+    {
+        // Create new bullet in start_fire_position
+        var bullet = Instantiate(Bullet);
+        bullet.transform.position = transform.position;
+        bullet.tag = "Bullet";
         // Direction fly for bullet
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z += Camera.main.nearClipPlane;
 
         // Bullet size and instantiate 'Bullet' component
-        bullet.transform.localScale = new Vector3(1f, 1f, 1);
+        bullet.transform.localScale = new Vector3(0.3f, 0.3f, 1);
         bullet.AddComponent<Bullet>().Instantiate(bullet, mousePosition, speed_bullet);
     }
 
@@ -335,5 +397,6 @@ public class Weapon : MonoBehaviour
         Heavy_Machine_Gun = 3,
         Sniper_Rifle = 4,
         Grenade_Launcher = 5,
+        Drone_gun = 6,
     }
 }
