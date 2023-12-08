@@ -12,19 +12,10 @@ public class Peasant : Enemies
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        // print(this.gameObject);
-        // print(other.tag);
+        // TODO Need soldier with HitBox
         if (other.CompareTag("PlayerHitBox"))
         {
             Attack();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Bullet"))
-        {
-            print("получил урон");
         }
     }
 }

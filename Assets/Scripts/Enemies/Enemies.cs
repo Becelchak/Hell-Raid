@@ -27,6 +27,9 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     protected int attackDamage;
 
     [SerializeField]
+    protected int attackRange;
+
+    [SerializeField]
     private float speed;
     private float attackTimer;
     public bool playerChasing;
@@ -34,6 +37,9 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     [SerializeField]
     private Transform playerTransform;
     private NavMeshAgent agent;
+
+    [SerializeField]
+    private Soldier soldier;
 
     private void Awake()
     {
@@ -50,9 +56,10 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     public virtual void Attack()
     {
+        // TODO Call with a target
         if (attackTimer >= 1f / attackSpeed)
         {
-            print("Attack");
+            soldier.TakeDamage(attackDamage);
             attackTimer = 0f;
         }
     }
@@ -77,5 +84,13 @@ public abstract class Enemies : MonoBehaviour, IDamageable
                 playerTransform.position.z
             )
         );
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            TakeDamage(Weapon.damage);
+        }
     }
 }

@@ -4,13 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ground
+  - Door
   - PlayerHitBox
   - Bullet
+  - Grenade
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - 
