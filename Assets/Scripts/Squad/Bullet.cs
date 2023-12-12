@@ -31,10 +31,11 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        
         if (gameObject.tag == "Grenade")
         {
-            gameObject.transform.Translate(Vector3.right * speed * 2 * Time.deltaTime + Vector3.down * speed * Time.deltaTime);
+            gameObject.transform.Translate(
+                Vector3.right * speed * 2 * Time.deltaTime + Vector3.down * speed * Time.deltaTime
+            );
             Explosion();
         }
     }
@@ -50,7 +51,8 @@ public class Bullet : MonoBehaviour
         // Get Angle in Radians
         var angleRad = Mathf.Atan2(
             direction.y - transform.position.y,
-            direction.x - transform.position.x);
+            direction.x - transform.position.x
+        );
         // Get Angle in Degrees
         angleDirection = (180 / Mathf.PI) * angleRad;
         // Rotate Object
@@ -60,11 +62,11 @@ public class Bullet : MonoBehaviour
     private void Explosion()
     {
         timerGrenade -= Time.fixedDeltaTime;
-        if(timerGrenade <= 0)
+        if (timerGrenade <= 0)
         {
             foreach (var target in targets)
             {
-                if(target.tag == "Player")
+                if (target.tag == "Player")
                     target.GetComponent<Soldier>().TakeDamage(50);
             }
             Destroy(self);
@@ -73,13 +75,14 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag is "Player")
-            targets.Add(other.gameObject);
-        if(other.gameObject.tag is "Enemy")
-        {
-            other.GetComponent<Enemies>().TakeDamage(50);
-            Destroy(self);
-        }
+        // Destroy(self);
+        // if (other.gameObject.tag is "Player")
+        //     targets.Add(other.gameObject);
+        // if (other.gameObject.CompareTag("Enemy"))
+        // {
+        //     other.GetComponent<Enemies>().TakeDamage(50);
+        //     Destroy(self);
+        // }
     }
 
     void OnTriggerExit2D(Collider2D other)

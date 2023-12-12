@@ -9,12 +9,4 @@ public class Dog : Enemies
     {
         base.Attack();
     }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            TakeDamage(attackDamage);
-        }
-    }
 }

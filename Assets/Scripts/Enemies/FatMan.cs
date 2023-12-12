@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class FatMan : Enemies
 {
+    int hpRegen = 10;
+
     public override void Attack()
     {
         base.Attack();
     }
 
-    private void OnCollisionEnter(Collision other)
+    public override void TakeDamage(int damageValue)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            TakeDamage(attackDamage);
-        }
+        base.TakeDamage(damageValue);
+        Health += hpRegen;
     }
 }

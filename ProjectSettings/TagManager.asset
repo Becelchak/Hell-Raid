@@ -7,17 +7,18 @@ TagManager:
   - Ground
   - Door
   - PlayerHitBox
-  - Bullet
   - Grenade
   - Enemy
+  - FalsePriest
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - 
   - 

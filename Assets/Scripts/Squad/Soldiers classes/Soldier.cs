@@ -79,10 +79,7 @@ public abstract class Soldier : MonoBehaviour, IDamageable
         Debug.Log($"{Health}");
     }
 
-    protected virtual void UseSkill()
-    {
-
-    }
+    protected virtual void UseSkill() { }
 
     public void Die()
     {

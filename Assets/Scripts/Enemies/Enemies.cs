@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -19,27 +20,25 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     [SerializeField]
     private int health;
+    public float attackSpeed;
 
-    [SerializeField]
-    private float attackSpeed;
-
-    [SerializeField]
-    protected int attackDamage;
+    public int attackDamage;
 
     [SerializeField]
     protected int attackRange;
-
-    [SerializeField]
-    private float speed;
+    public float speed;
     private float attackTimer;
-    public bool playerChasing;
 
-    [SerializeField]
     private Transform playerTransform;
     private NavMeshAgent agent;
+    private Soldier soldier;
 
     [SerializeField]
-    private Soldier soldier;
+    private Weapon soldierWeapon;
+
+    [SerializeField]
+    private List<Soldier_control> soldiers;
+    public bool isBuffed;
 
     private void Awake()
     {
@@ -48,21 +47,36 @@ public abstract class Enemies : MonoBehaviour, IDamageable
         agent.updateUpAxis = false;
     }
 
+    private void Start() { }
+
     private void Update()
     {
         attackTimer += Time.deltaTime;
         Move();
     }
 
+    private void FixedUpdate()
+    {
+        playerTransform = FindPlayerTransform();
+        Attack();
+    }
+
     public virtual void Attack()
     {
-        // TODO Call with a target
-        if (attackTimer >= 1f / attackSpeed)
+        float distance = (float)
+            Math.Round((playerTransform.position - gameObject.transform.position).sqrMagnitude);
+        if (attackTimer >= 1f / attackSpeed && distance < attackRange * attackRange)
         {
-            soldier.TakeDamage(attackDamage);
+            //анимаци атаки
+            print("атака");
+            UseSkill();
+            if (distance == 1.0f)
+                soldier.TakeDamage(attackDamage);
             attackTimer = 0f;
         }
     }
+
+    public virtual void UseSkill() { }
 
     public virtual void TakeDamage(int damageValue)
     {
@@ -77,20 +91,29 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     public virtual void Move() //У некоторых мобов свои маршруты.
     {
         agent.speed = speed;
-        agent.SetDestination(
-            new Vector3(
-                playerTransform.position.x,
-                playerTransform.position.y,
-                playerTransform.position.z
-            )
-        );
+        agent.SetDestination(new Vector2(playerTransform.position.x, playerTransform.position.y));
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(Weapon.damage);
+            TakeDamage(soldierWeapon.damage);
+            Destroy(other.gameObject);
         }
+    }
+
+    private Transform FindPlayerTransform()
+    {
+        foreach (var soldier in soldiers)
+        {
+            print("ищу игрока");
+            if (soldier.isPlayer)
+            {
+                this.soldier = soldier.gameObject.GetComponent<Soldier>();
+                return soldier.transform;
+            }
+        }
+        return this.transform;
     }
 }

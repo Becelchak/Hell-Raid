@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
     private GameObject Bullet;
     private float coolDownShoot = 0;
     public float timerShoot = 0;
-    public static int damage = 0;
+    public int damage = 0;
     private int ammo_in_magazine = 0;
     private int ammo_temp = 0;
     private int count_magazine = 0;
@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         SetParameterWeapon();
-        if(Weapon_Type != Weapons_Type.Drone_gun)
+        if (Weapon_Type != Weapons_Type.Drone_gun)
         {
             uiAmmoCount = GameObject.Find("Ammo in Magazine").GetComponentInChildren<Text>();
             uiMagazineCount = GameObject.Find("Magazine").GetComponentInChildren<Text>();
@@ -36,6 +36,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        print($"{Weapon_Type}:{damage}");
         if (Weapon_Type != Weapons_Type.Drone_gun)
         {
             uiAmmoCount.text = ammo_temp.ToString();
@@ -136,20 +137,20 @@ public class Weapon : MonoBehaviour
                 }
                 break;
             case Weapons_Type.Grenade_Launcher:
-                 if (ammo_temp > 0)
-                 {
-                     ammo_temp -= 1;
-                     ShootGrenadeLauncher();
-                 }
-                 else
-                 {
-                     if (count_magazine > 0)
-                     {
-                         ammo_temp = ammo_in_magazine;
-                         count_magazine -= 1;
-                     }
-                 }
-                 break;
+                if (ammo_temp > 0)
+                {
+                    ammo_temp -= 1;
+                    ShootGrenadeLauncher();
+                }
+                else
+                {
+                    if (count_magazine > 0)
+                    {
+                        ammo_temp = ammo_in_magazine;
+                        count_magazine -= 1;
+                    }
+                }
+                break;
             case Weapons_Type.Drone_gun:
                 if (ammo_temp > 0)
                 {
@@ -188,6 +189,7 @@ public class Weapon : MonoBehaviour
                 count_magazine = 3;
                 break;
             case Weapons_Type.Shoot_Gun:
+
                 speed_bullet = 8f;
                 coolDownShoot = 1f;
                 damage = 10;
@@ -225,6 +227,7 @@ public class Weapon : MonoBehaviour
                 count_magazine = 3;
                 break;
             case Weapons_Type.Grenade_Launcher:
+
                 speed_bullet = 4f;
                 coolDownShoot = 1f;
                 damage = 50;
