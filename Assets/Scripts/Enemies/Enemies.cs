@@ -31,13 +31,14 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     private Transform playerTransform;
     private NavMeshAgent agent;
-    private Soldier soldier;
-
-    [SerializeField]
+    private Soldier soldierTarget;
     private Weapon soldierWeapon;
 
     [SerializeField]
-    private List<Soldier_control> soldiers;
+    private List<Soldier_control> soldiersStatus;
+
+    private List<Soldier> soldiers = new List<Soldier>();
+    private List<Weapon> soldiersWeapon = new List<Weapon>();
     public bool isBuffed;
 
     private void Awake()
@@ -47,7 +48,17 @@ public abstract class Enemies : MonoBehaviour, IDamageable
         agent.updateUpAxis = false;
     }
 
-    private void Start() { }
+    private void Start()
+    {
+        foreach (var soldier in soldiersStatus)
+        {
+            soldiers.Add(soldier.gameObject.GetComponent<Soldier>());
+        }
+        foreach (var soldier in soldiers)
+        {
+            soldiersWeapon.Add(soldier.gameObject.transform.GetChild(1).GetComponent<Weapon>());
+        }
+    }
 
     private void Update()
     {
@@ -57,7 +68,8 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        playerTransform = FindPlayerTransform();
+        FindActivePlayer();
+        soldierWeapon = GetWeapon();
         Attack();
     }
 
@@ -71,7 +83,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
             print("атака");
             UseSkill();
             if (distance == 1.0f)
-                soldier.TakeDamage(attackDamage);
+                soldierTarget.TakeDamage(attackDamage);
             attackTimer = 0f;
         }
     }
@@ -103,17 +115,26 @@ public abstract class Enemies : MonoBehaviour, IDamageable
         }
     }
 
-    private Transform FindPlayerTransform()
+    private void FindActivePlayer()
     {
-        foreach (var soldier in soldiers)
+        for (int i = 0; i < soldiers.Count; i++)
         {
             print("ищу игрока");
-            if (soldier.isPlayer)
+            if (soldiersStatus[i].isPlayer)
             {
-                this.soldier = soldier.gameObject.GetComponent<Soldier>();
-                return soldier.transform;
+                soldierTarget = soldiers[i];
+                playerTransform = soldierTarget.transform;
             }
         }
-        return this.transform;
+    }
+
+    private Weapon GetWeapon()
+    {
+        foreach (var weapon in soldiersWeapon)
+        {
+            if (weapon.gameObject.activeSelf)
+                return weapon;
+        }
+        return null;
     }
 }
