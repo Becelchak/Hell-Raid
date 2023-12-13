@@ -51,9 +51,10 @@ public abstract class Soldier : MonoBehaviour, IDamageable
         skillIcon.fillAmount = 0;
         maxHealth = health;
     }
+
     void Update()
     {
-        if(control.IsPlayerControl())
+        if (control.IsPlayerControl())
         {
             if (!canUseSkill)
             {
@@ -79,10 +80,7 @@ public abstract class Soldier : MonoBehaviour, IDamageable
         Debug.Log($"{Health}");
     }
 
-    protected virtual void UseSkill()
-    {
-
-    }
+    protected virtual void UseSkill() { }
 
     public void Die()
     {

@@ -8,12 +8,4 @@ public class Mage : Enemies
     {
         base.Attack();
     }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            TakeDamage(attackDamage);
-        }
-    }
 }

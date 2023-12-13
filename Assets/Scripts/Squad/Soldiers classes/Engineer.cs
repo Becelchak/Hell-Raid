@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 
 public class Engineer : Soldier
 {
-    [SerializeField] private GameObject dronerPrefab;
+    [SerializeField]
+    private GameObject dronerPrefab;
     private GameObject drone;
+
     protected override void UseSkill()
     {
         drone = Instantiate(dronerPrefab);
@@ -36,8 +37,11 @@ public class Engineer : Soldier
         // Drone control
         if (drone != null)
         {
-            drone.transform.position =
-                new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+            drone.transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y + 2,
+                transform.position.z
+            );
             // Mouse control
             var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z += Camera.main.nearClipPlane;

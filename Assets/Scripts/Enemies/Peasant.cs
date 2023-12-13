@@ -9,13 +9,4 @@ public class Peasant : Enemies
     {
         base.Attack();
     }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        // TODO Need soldier with HitBox
-        if (other.CompareTag("PlayerHitBox"))
-        {
-            Attack();
-        }
-    }
 }
