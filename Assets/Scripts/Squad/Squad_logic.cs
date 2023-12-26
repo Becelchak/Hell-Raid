@@ -70,8 +70,41 @@ public class Squad_logic : MonoBehaviour
         camera.GetComponent<CinemachineVirtualCamera>().Follow = secondSoldier.transform;
     }
 
+    public void DeleteSoldier(Soldier soldier)
+    {
+        foreach (var unit in units)
+        {
+            if (unit.GetComponent<Soldier>() == soldier)
+            {
+                if(units.Count > 1)
+                {
+                    var secondSoldier = units[1];
+
+                    // Delegate control on unit to player
+                    var control = secondSoldier.GetComponent<Soldier_control>();
+                    control.SetControlPlayer();
+                    control.SetTarget(null);
+                    secondSoldier.tag = "Player";
+                    secondSoldier.GetComponent<CapsuleCollider2D>().enabled = true;
+                    secondSoldier.GetComponent<SpriteRenderer>().enabled = true;
+                    var weapon = secondSoldier.transform.GetChild(1).gameObject;
+                    weapon.SetActive(true);
+
+                    RefreshTargetPlayer(secondSoldier);
+                }
+
+                units.Remove(unit);
+                Destroy(unit,1f);
+                hud.RefreshSquad(units);
+            }
+                
+        }
+    }
+
     public void ChangeSoldier(int number)
     {
+
+        if(units.Count < number) return;
         var oldSoldier = units[0];
         foreach (
             var soldier in units.Where(
@@ -86,7 +119,6 @@ public class Squad_logic : MonoBehaviour
         // Off old soldier
         var controlOldSoldier = oldSoldier.GetComponent<Soldier_control>();
         controlOldSoldier.SetControlAi();
-        controlOldSoldier.SetTarget(newSoldier);
         oldSoldier.GetComponent<CapsuleCollider2D>().enabled = false;
         oldSoldier.GetComponent<SpriteRenderer>().enabled = false;
         var oldWeapon = oldSoldier.transform.GetChild(1).gameObject;
@@ -104,6 +136,9 @@ public class Squad_logic : MonoBehaviour
 
         hud.RefreshSquad(units);
         camera.GetComponent<CinemachineVirtualCamera>().Follow = newSoldier.transform;
+
+        RefreshTargetPlayer(newSoldier);
+
     }
 
     public void AddAmmoSquad()
@@ -142,5 +177,17 @@ public class Squad_logic : MonoBehaviour
         }
 
         return result;
+    }
+
+    public void RefreshTargetPlayer(GameObject newSoldier)
+    {
+        foreach (
+            var soldier in units.Where(
+                soldier => !soldier.GetComponent<Soldier_control>().IsPlayerControl()
+            )
+        )
+        {
+            soldier.GetComponent<Soldier_control>().SetTarget(newSoldier);
+        }
     }
 }

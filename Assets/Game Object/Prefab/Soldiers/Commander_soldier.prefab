@@ -103,8 +103,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.5
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   moveSpeed: 1
   skillCoolDown: 45
   squadLogic: {fileID: 0}
+  maxHealth: 0
   Weapon: 0
 --- !u!1 &4870168398956928534
 GameObject:
@@ -293,6 +294,7 @@ MonoBehaviour:
   Weapon_Type: 0
   Bullet: {fileID: 4420171491422176227, guid: db5fedfe011c655468b6751af68dafe3, type: 3}
   timerShoot: 0
+  damage: 0
 --- !u!1 &4870168400239835705
 GameObject:
   m_ObjectHideFlags: 0
