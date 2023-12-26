@@ -143,6 +143,7 @@ MonoBehaviour:
   targetFollow: {fileID: 0}
   type: 0
   healPointTemp: 0
+  squadLogic: {fileID: 0}
 --- !u!114 &4870168398943058011
 MonoBehaviour:
   m_ObjectHideFlags: 0

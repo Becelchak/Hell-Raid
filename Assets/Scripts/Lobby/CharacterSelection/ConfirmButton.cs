@@ -6,6 +6,7 @@ using Cinemachine;
 using Microsoft.Unity.VisualStudio.Editor;
 using Unity.Mathematics;
 using UnityEngine;
+using YG;
 
 public class ConfirmButton : MonoBehaviour
 {
@@ -26,22 +27,19 @@ public class ConfirmButton : MonoBehaviour
 
     [SerializeField]
     private GameObject squad;
-
-    [SerializeField]
-    private GameObject cinemaMachineObject;
+    private Squad_logic logic;
 
     [SerializeField]
     private GameObject soldierClasses;
-    private Collider2D soldierCollider;
-    private Soldier_control soldier;
-    private Transform soldierTransform;
-    private SpriteRenderer soldierImage;
+
+    [SerializeField]
     private CinemachineVirtualCamera cinemachine;
+    private Soldier_control[] soldierControls = new Soldier_control[4];
 
     public void Start()
     {
+        logic = squad.GetComponent<Squad_logic>();
         squadTransform = squadTransform.gameObject.GetComponent<Transform>();
-        cinemachine = cinemaMachineObject.GetComponent<CinemachineVirtualCamera>();
         // soldierCollider = soldierPrefab.gameObject.GetComponent<Collider2D>();
         // soldierTransform = soldierPrefab.gameObject.GetComponent<Transform>();
         // soldier = soldierPrefab.gameObject.GetComponent<Soldier_control>();
@@ -72,16 +70,27 @@ public class ConfirmButton : MonoBehaviour
             Quaternion.identity,
             squadTransform
         );
+
+        var soldierColtrol = newSoldier.GetComponent<Soldier_control>();
+        var soldierComponent = newSoldier.GetComponent<Soldier>();
+        var colliderSoldier = newSoldier.GetComponent<Collider2D>();
+        soldierComponent.squadLogic = logic;
+        soldierColtrol.squadLogic = logic;
+        var soldierTransform = newSoldier.GetComponent<Transform>();
         if (Index == 0)
         {
-            var soliderTransform = newSoldier.GetComponent<Transform>();
-            newSoldier.GetComponent<Collider2D>().enabled = true;
-            newSoldier.GetComponent<Soldier_control>().isPlayer = true;
+            colliderSoldier.enabled = true;
+            soldierColtrol.isPlayer = true;
             soldierTransform.Find("Weapon").gameObject.SetActive(true);
+
             newSoldier.GetComponent<SpriteRenderer>().enabled = true;
-            cinemachine.Follow = soliderTransform;
+            cinemachine.Follow = soldierTransform;
         }
-        // Instantiate(newSoldier, );
+        soldierControls[Index] = soldierColtrol;
+        YandexGame.savesData.sprites[Index] = slots.squadImages[Index].sprite;
+        YandexGame.savesData.soldierClasses[Index] = soldierColtrol.type;
+        YandexGame.savesData.hpSoldiers[Index] = soldierComponent.Health;
+        YandexGame.savesData.weaponsTypes[Index] = soldierComponent.Weapon;
     }
 
     private void StartLobby()
@@ -90,6 +99,11 @@ public class ConfirmButton : MonoBehaviour
         {
             soldierClasses.SetActive(false);
             startGameBtn.SetActive(true);
+            for (int i = 1; i < soldierControls.Length; i++)
+            {
+                soldierControls[i].SetTarget(soldierControls[0].gameObject);
+            }
+            YandexGame.SaveProgress();
         }
     }
 

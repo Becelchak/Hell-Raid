@@ -41,7 +41,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7169323821841839942}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5ca7bafeaf66b74d9977426efb4e87c, type: 3}
   m_Name: 
@@ -195,6 +195,7 @@ MonoBehaviour:
   targetFollow: {fileID: 0}
   type: 3
   healPointTemp: 0
+  squadLogic: {fileID: 0}
 --- !u!114 &7169323821988615674
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,16 +9,14 @@ public abstract class Soldier : MonoBehaviour, IDamageable
     private int health;
 
     [SerializeField]
-    private float moveSpeed;
+    private float moveSpeed = 1f;
 
     [SerializeField]
-    protected float skillCoolDown;
+    protected float skillCoolDown = 60f;
     protected float skillTimer;
     protected bool canUseSkill = false;
     protected Image skillIcon;
-
-    [SerializeField]
-    private Squad_logic squadLogic;
+    public Squad_logic squadLogic;
 
     protected Soldier_control control;
     public int Health

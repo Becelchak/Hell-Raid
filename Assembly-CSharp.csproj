@@ -70,7 +70,7 @@
     <Compile Include="Assets\YandexGame\ScriptsYG\InfoYG\InfoYG.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Soldier.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\Storage\Storage_yg.cs" />
-    <Compile Include="Assets\Scripts\IDamageable.cs" />
+    <Compile Include="Assets\Scripts\Enemies\IDamageable.cs" />
     <Compile Include="Assets\YandexGame\Example\Scripts\LanguageExample.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\Inside\ConfigYG.cs" />
     <Compile Include="Assets\YandexGame\Example\Scripts\DebugViewing.cs" />
@@ -135,7 +135,6 @@
     <Compile Include="Assets\Scripts\Lobby\CharacterSelection\MenuInfo.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\ActivityOnAuthorizationYG.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\TimerBeforeAdsYG.cs" />
-    <Compile Include="Assets\Scripts\testEnemy.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\Language\UtilsLang.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\PromptYG.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\Inside\CallingAnEvent.cs" />
@@ -152,6 +151,9 @@
     <Compile Include="Assets\YandexGame\ScriptsYG\ViewingAdsYG.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Grenadier.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\Leaderboard\LeaderboardYG.cs" />
+    <Compile Include="Assets\Scripts\Game\LevelStart.cs" />
+    <Compile Include="Assets\Scripts\TestSaveGameObject.cs" />
+    <Compile Include="Assets\Scripts\TransferData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

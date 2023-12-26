@@ -1,4 +1,7 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace YG
 {
     [System.Serializable]
@@ -12,13 +15,19 @@ namespace YG
 
         // Тестовые сохранения для демо сцены
         // Можно удалить этот код, но тогда удалите и демо (папка Example)
-        public int money = 1;                       // Можно задать полям значения по умолчанию
+        public int money = 1; // Можно задать полям значения по умолчанию
         public string newPlayerName = "Hello!";
         public bool[] openLevels = new bool[3];
 
         // Ваши сохранения
 
-        // ...
+        private readonly int squadSize = 4;
+        public int level;
+        public Sprite[] sprites;
+        public bool[] stateColliders;
+        public Soldier_control.SoldierClass[] soldierClasses;
+        public int[] hpSoldiers;
+        public Weapon.Weapons_Type[] weaponsTypes;
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 
@@ -27,8 +36,12 @@ namespace YG
         public SavesYG()
         {
             // Допустим, задать значения по умолчанию для отдельных элементов массива
-
             openLevels[1] = true;
+
+            sprites = new Sprite[squadSize];
+            soldierClasses = new Soldier_control.SoldierClass[squadSize];
+            hpSoldiers = new int[squadSize];
+            weaponsTypes = new Weapon.Weapons_Type[squadSize];
         }
     }
 }

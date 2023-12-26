@@ -20,7 +20,6 @@ public class Soldier_control : MonoBehaviour
     private Weapon.Weapons_Type weapon;
 
     [Header("Class parameter")]
-    [SerializeField]
     public SoldierClass type;
     private float healPointTotal;
 
@@ -29,7 +28,7 @@ public class Soldier_control : MonoBehaviour
     private Rigidbody2D rigBody;
 
     private Soldier soldier;
-    private Squad_logic squadLogic;
+    public Squad_logic squadLogic;
 
     void Start()
     {
