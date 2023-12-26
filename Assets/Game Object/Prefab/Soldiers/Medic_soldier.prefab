@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6845073707550610975
 Transform:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6845073707550610974}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5ca7bafeaf66b74d9977426efb4e87c, type: 3}
   m_Name: 
@@ -378,7 +378,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.30558026, g: 0.5943396, b: 0.3588216, a: 1}
+  m_Color: {r: 0.6770402, g: 0.6981132, b: 0.042150192, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -441,6 +441,7 @@ MonoBehaviour:
   targetFollow: {fileID: 0}
   type: 4
   healPointTemp: 0
+  squadLogic: {fileID: 0}
 --- !u!114 &6845073708007054952
 MonoBehaviour:
   m_ObjectHideFlags: 0
