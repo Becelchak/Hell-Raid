@@ -50,6 +50,8 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        // Требуется регулярно обновлять списки солдат, их оружия и статусов, на случай если один из солдат умрет
+        // -> иначе будет ошибка ссылки на несуществующие объекты
         foreach (var soldier in soldiersStatus)
         {
             soldiers.Add(soldier.gameObject.GetComponent<Soldier>());
@@ -64,6 +66,8 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     {
         attackTimer += Time.deltaTime;
         Move();
+
+        
     }
 
     private void FixedUpdate()
@@ -75,6 +79,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     public virtual void Attack()
     {
+        // Место ссылки на потенциально несуществующий объект
         float distance = (float)
             Math.Round((playerTransform.position - gameObject.transform.position).sqrMagnitude);
         if (attackTimer >= 1f / attackSpeed && distance < attackRange * attackRange)
@@ -108,18 +113,24 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("BulletSniper"))
+        {
+            TakeDamage(soldierWeapon.damage);
+        }
+        else if (other.gameObject.CompareTag("Bullet"))
         {
             TakeDamage(soldierWeapon.damage);
             Destroy(other.gameObject);
         }
+        
     }
 
     private void FindActivePlayer()
     {
         for (int i = 0; i < soldiers.Count; i++)
         {
-            print("ищу игрока");
+            //print("ищу игрока");
+            // Место ссылки на потенциально несуществующий объект
             if (soldiersStatus[i].isPlayer)
             {
                 soldierTarget = soldiers[i];
@@ -130,6 +141,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     private Weapon GetWeapon()
     {
+        // Место ссылки на потенциально несуществующий объект
         foreach (var weapon in soldiersWeapon)
         {
             if (weapon.gameObject.activeSelf)

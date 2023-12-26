@@ -131,8 +131,17 @@ public class Soldier_control : MonoBehaviour
         }
         else
         {
+            var axisX = Input.GetAxisRaw("Horizontal");
+            rigBody.velocity = new Vector2(axisX * speed * 5, rigBody.velocity.y);
+
+            if (Input.GetButtonDown("Jump") && onGround)
+            {
+                Jump();
+            }
+
             var target_pos = targetFollow.transform.position;
             transform.position = target_pos;
+
 
             #region
 

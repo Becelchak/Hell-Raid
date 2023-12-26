@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.tag == "Bullet")
+        if (gameObject.tag == "Bullet" || gameObject.tag == "BulletSniper")
         {
             gameObject.transform.Translate(Vector3.right * speed * Time.deltaTime);
             Destroy(self, 2f);

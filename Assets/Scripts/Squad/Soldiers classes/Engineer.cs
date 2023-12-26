@@ -14,26 +14,8 @@ public class Engineer : Soldier
         Destroy(drone, 40f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (base.control.IsPlayerControl())
-        {
-            if (!base.canUseSkill)
-            {
-                skillTimer -= Time.deltaTime;
-                if (skillTimer <= 0)
-                    canUseSkill = true;
-                base.skillIcon.fillAmount = 1 - skillTimer / (skillCoolDown / 100 * 100);
-            }
-            if (base.canUseSkill && Input.GetKeyDown(KeyCode.R))
-            {
-                skillTimer = skillCoolDown;
-                UseSkill();
-                base.canUseSkill = false;
-                base.skillIcon.fillAmount = 0;
-            }
-        }
-
         // Drone control
         if (drone != null)
         {
