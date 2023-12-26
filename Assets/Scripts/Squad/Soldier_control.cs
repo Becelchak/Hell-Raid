@@ -9,12 +9,11 @@ public class Soldier_control : MonoBehaviour
 {
     [Header("Move parameter")]
     private float speed = 1f;
-
-    [SerializeField]
-    private bool isPlayer = false;
+    public bool isPlayer = false;
 
     [SerializeField]
     private GameObject targetFollow;
+
     //private bool canFollow = true;
     private bool onGround = true;
 
@@ -121,7 +120,7 @@ public class Soldier_control : MonoBehaviour
             weapon.timerShoot -= Time.deltaTime;
 
             //Change unit
-            if(Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
                 squadLogic.ChangeSoldier(0);
             if (Input.GetKeyDown(KeyCode.Alpha2))
                 squadLogic.ChangeSoldier(1);
@@ -129,13 +128,20 @@ public class Soldier_control : MonoBehaviour
                 squadLogic.ChangeSoldier(2);
             if (Input.GetKeyDown(KeyCode.Alpha4))
                 squadLogic.ChangeSoldier(3);
-
-
         }
         else
         {
+            var axisX = Input.GetAxisRaw("Horizontal");
+            rigBody.velocity = new Vector2(axisX * speed * 5, rigBody.velocity.y);
+
+            if (Input.GetButtonDown("Jump") && onGround)
+            {
+                Jump();
+            }
+
             var target_pos = targetFollow.transform.position;
             transform.position = target_pos;
+
 
             #region
 

@@ -1,43 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 
 public class Engineer : Soldier
 {
-    [SerializeField] private GameObject dronerPrefab;
+    [SerializeField]
+    private GameObject dronerPrefab;
     private GameObject drone;
+
     protected override void UseSkill()
     {
         drone = Instantiate(dronerPrefab);
         Destroy(drone, 40f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (base.control.IsPlayerControl())
-        {
-            if (!base.canUseSkill)
-            {
-                skillTimer -= Time.deltaTime;
-                if (skillTimer <= 0)
-                    canUseSkill = true;
-                base.skillIcon.fillAmount = 1 - skillTimer / (skillCoolDown / 100 * 100);
-            }
-            if (base.canUseSkill && Input.GetKeyDown(KeyCode.R))
-            {
-                skillTimer = skillCoolDown;
-                UseSkill();
-                base.canUseSkill = false;
-                base.skillIcon.fillAmount = 0;
-            }
-        }
-
         // Drone control
         if (drone != null)
         {
-            drone.transform.position =
-                new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+            drone.transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y + 2,
+                transform.position.z
+            );
             // Mouse control
             var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z += Camera.main.nearClipPlane;
