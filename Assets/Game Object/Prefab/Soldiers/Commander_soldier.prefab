@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.30558026, g: 0.5943396, b: 0.3588216, a: 1}
+  m_Color: {r: 0.30588236, g: 0.5877178, b: 0.59607846, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b54cd424a10fc24f8ef94ee5c8923b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
+  isPlayer: 0
   targetFollow: {fileID: 0}
   type: 0
   healPointTemp: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   moveSpeed: 1
   skillCoolDown: 45
   squadLogic: {fileID: 0}
+  maxHealth: 0
   Weapon: 0
 --- !u!1 &4870168398956928534
 GameObject:
@@ -260,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4870168400017982238
 Transform:
   m_ObjectHideFlags: 0
@@ -293,6 +294,7 @@ MonoBehaviour:
   Weapon_Type: 0
   Bullet: {fileID: 4420171491422176227, guid: db5fedfe011c655468b6751af68dafe3, type: 3}
   timerShoot: 0
+  damage: 0
 --- !u!1 &4870168400239835705
 GameObject:
   m_ObjectHideFlags: 0
