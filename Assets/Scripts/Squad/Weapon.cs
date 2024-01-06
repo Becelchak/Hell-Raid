@@ -36,7 +36,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        print($"{Weapon_Type}:{damage}");
+        //print($"{Weapon_Type}:{damage}");
         if (Weapon_Type != Weapons_Type.Drone_gun)
         {
             uiAmmoCount.text = ammo_temp.ToString();
@@ -338,7 +338,7 @@ public class Weapon : MonoBehaviour
     {
         // Create new bullet in start_fire_position
         var bullet = Instantiate(Bullet);
-        bullet.tag = "Bullet";
+        bullet.tag = "BulletSniper";
         bullet.transform.position = transform.GetChild(1).position;
         // Direction fly for bullet
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

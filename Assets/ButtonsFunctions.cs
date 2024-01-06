@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class ButtonsFunctions : MonoBehaviour
 {
     public void RestartScene()
-    {
-        SceneManager.LoadScene("SampleScene");
+    { 
+        SceneManager.LoadScene($"{SceneManager.GetActiveScene().name}");
     }
 
     public void CloseSoldierPickMenu()

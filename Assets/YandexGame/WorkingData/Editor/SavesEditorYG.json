@@ -1,0 +1,47 @@
+{
+    "idSave": 13,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "money": 1,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "level": 0,
+    "sprites": [
+        {
+            "instanceID": 27868
+        },
+        {
+            "instanceID": 27830
+        },
+        {
+            "instanceID": 27880
+        },
+        {
+            "instanceID": 27874
+        }
+    ],
+    "stateColliders": [],
+    "soldierClasses": [
+        1,
+        0,
+        2,
+        5
+    ],
+    "hpSoldiers": [
+        125,
+        150,
+        150,
+        100
+    ],
+    "weaponsTypes": [
+        2,
+        0,
+        5,
+        4
+    ]
+}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,9 @@ public class Squad_logic : MonoBehaviour
     [SerializeField]
     [CanBeNull]
     private UiSoldierHud hud;
-    private List<GameObject> units = new List<GameObject>();
+
+    [NonSerialized]
+    public List<GameObject> units = new List<GameObject>();
 
     void Start()
     {
@@ -22,56 +25,90 @@ public class Squad_logic : MonoBehaviour
             var child = transform.GetChild(i).gameObject;
             units.Add(child);
         }
+        ChangeSoldier(0);
     }
 
     void Update() { }
 
-    public void AddNewSoldier()
+    // public void AddNewSoldier()
+    // {
+    //     // If squad full -> do nothing
+    //     if (units.Count >= 4)
+    //         return;
+    //     var lastSoldier = units[^1];
+    //     var newSoldier = Instantiate(lastSoldier);
+
+    //     // Spawn new soldier behind squad and set AI control
+    //     newSoldier.GetComponent<Soldier_control>().SetTarget(lastSoldier);
+    //     newSoldier.GetComponent<Soldier_control>().SetControlAi();
+    //     // Add new name and set parent -> squad
+    //     newSoldier.name = $"Soldier_test {units.Count}";
+    //     newSoldier.transform.parent = transform;
+
+    //     lastSoldier.GetComponentInChildren<BoxCollider2D>().isTrigger = true;
+    //     units.Add(newSoldier);
+    //     hud.RefreshSquad();
+    // }
+
+    // public void DeleteFirstSoldier()
+    // {
+    //     if (units.Count <= 1)
+    //         return;
+    //     var firstSoldier = units[0];
+    //     var secondSoldier = units[1];
+
+    //     // Delegate control on unit to player
+    //     var control = secondSoldier.GetComponent<Soldier_control>();
+    //     control.SetControlPlayer();
+    //     control.SetTarget(null);
+    //     secondSoldier.tag = "Player";
+    //     secondSoldier.GetComponent<CapsuleCollider2D>().enabled = true;
+    //     secondSoldier.GetComponent<SpriteRenderer>().enabled = true;
+    //     var weapon = secondSoldier.transform.GetChild(1).gameObject;
+    //     weapon.SetActive(true);
+
+    //     units.Remove(firstSoldier);
+    //     Destroy(firstSoldier);
+    //     hud.RefreshSquad(units);
+
+    //     camera.GetComponent<CinemachineVirtualCamera>().Follow = secondSoldier.transform;
+    // }
+
+    public void DeleteSoldier(Soldier soldier)
     {
-        // If squad full -> do nothing
-        if (units.Count >= 4)
-            return;
-        var lastSoldier = units[^1];
-        var newSoldier = Instantiate(lastSoldier);
+        foreach (var unit in units)
+        {
+            if (unit.GetComponent<Soldier>() == soldier)
+            {
+                if (units.Count > 1)
+                {
+                    var secondSoldier = units[1];
 
-        // Spawn new soldier behind squad and set AI control
-        newSoldier.GetComponent<Soldier_control>().SetTarget(lastSoldier);
-        newSoldier.GetComponent<Soldier_control>().SetControlAi();
-        // Add new name and set parent -> squad
-        newSoldier.name = $"Soldier_test {units.Count}";
-        newSoldier.transform.parent = transform;
+                    // Delegate control on unit to player
+                    var control = secondSoldier.GetComponent<Soldier_control>();
+                    control.SetControlPlayer();
+                    control.SetTarget(null);
+                    secondSoldier.tag = "Player";
+                    secondSoldier.GetComponent<CapsuleCollider2D>().enabled = true;
+                    secondSoldier.GetComponent<SpriteRenderer>().enabled = true;
+                    var weapon = secondSoldier.transform.GetChild(1).gameObject;
+                    weapon.SetActive(true);
+                    SetEnemyTarget(secondSoldier, weapon);
+                    RefreshTargetPlayer(secondSoldier);
+                }
 
-        lastSoldier.GetComponentInChildren<BoxCollider2D>().isTrigger = true;
-        units.Add(newSoldier);
-        hud.RefreshSquad();
-    }
-
-    public void DeleteFirstSoldier()
-    {
-        if (units.Count <= 1)
-            return;
-        var firstSoldier = units[0];
-        var secondSoldier = units[1];
-
-        // Delegate control on unit to player
-        var control = secondSoldier.GetComponent<Soldier_control>();
-        control.SetControlPlayer();
-        control.SetTarget(null);
-        secondSoldier.tag = "Player";
-        secondSoldier.GetComponent<CapsuleCollider2D>().enabled = true;
-        secondSoldier.GetComponent<SpriteRenderer>().enabled = true;
-        var weapon = secondSoldier.transform.GetChild(1).gameObject;
-        weapon.SetActive(true);
-
-        units.Remove(firstSoldier);
-        Destroy(firstSoldier);
-        hud.RefreshSquad(units);
-
-        camera.GetComponent<CinemachineVirtualCamera>().Follow = secondSoldier.transform;
+                units.Remove(unit);
+                Destroy(unit, 1f);
+                hud.RefreshSquad(units);
+                break;
+            }
+        }
     }
 
     public void ChangeSoldier(int number)
     {
+        if (units.Count < number)
+            return;
         var oldSoldier = units[0];
         foreach (
             var soldier in units.Where(
@@ -81,12 +118,12 @@ public class Squad_logic : MonoBehaviour
         {
             oldSoldier = soldier;
         }
+        var old = units.Where(sold => sold.GetComponent<Soldier_control>().IsPlayerControl());
         var newSoldier = units[number];
 
         // Off old soldier
         var controlOldSoldier = oldSoldier.GetComponent<Soldier_control>();
         controlOldSoldier.SetControlAi();
-        controlOldSoldier.SetTarget(newSoldier);
         oldSoldier.GetComponent<CapsuleCollider2D>().enabled = false;
         oldSoldier.GetComponent<SpriteRenderer>().enabled = false;
         var oldWeapon = oldSoldier.transform.GetChild(1).gameObject;
@@ -96,14 +133,26 @@ public class Squad_logic : MonoBehaviour
         var controlNewSoldier = newSoldier.GetComponent<Soldier_control>();
         controlNewSoldier.SetControlPlayer();
         controlNewSoldier.SetTarget(null);
+
         newSoldier.tag = "Player";
         newSoldier.GetComponent<CapsuleCollider2D>().enabled = true;
         newSoldier.GetComponent<SpriteRenderer>().enabled = true;
         var weapon = newSoldier.transform.GetChild(1).gameObject;
         weapon.SetActive(true);
 
+        SetEnemyTarget(newSoldier, weapon);
+
         hud.RefreshSquad(units);
         camera.GetComponent<CinemachineVirtualCamera>().Follow = newSoldier.transform;
+
+        RefreshTargetPlayer(newSoldier);
+    }
+
+    void SetEnemyTarget(GameObject soldier, GameObject weapon)
+    {
+        Enemies.playerTransform = soldier.transform;
+        Enemies.soldierTarget = soldier.GetComponent<Soldier>();
+        Enemies.soldierWeapon = weapon.GetComponent<Weapon>();
     }
 
     public void AddAmmoSquad()
@@ -142,5 +191,17 @@ public class Squad_logic : MonoBehaviour
         }
 
         return result;
+    }
+
+    public void RefreshTargetPlayer(GameObject newSoldier)
+    {
+        foreach (
+            var soldier in units.Where(
+                soldier => !soldier.GetComponent<Soldier_control>().IsPlayerControl()
+            )
+        )
+        {
+            soldier.GetComponent<Soldier_control>().SetTarget(newSoldier);
+        }
     }
 }

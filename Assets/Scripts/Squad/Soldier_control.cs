@@ -20,7 +20,6 @@ public class Soldier_control : MonoBehaviour
     private Weapon.Weapons_Type weapon;
 
     [Header("Class parameter")]
-    [SerializeField]
     public SoldierClass type;
     private float healPointTotal;
 
@@ -29,7 +28,7 @@ public class Soldier_control : MonoBehaviour
     private Rigidbody2D rigBody;
 
     private Soldier soldier;
-    private Squad_logic squadLogic;
+    public Squad_logic squadLogic;
 
     void Start()
     {
@@ -53,7 +52,7 @@ public class Soldier_control : MonoBehaviour
                 healPointTotal = soldierCLass3.Health;
                 weapon = soldierCLass3.Weapon;
                 break;
-            case SoldierClass.Machine_gunner:
+            case SoldierClass.MachineGunner:
                 var soldierCLass4 = GetComponent<MachineGunner>();
                 speed = soldierCLass4.MoveSpeed;
                 healPointTotal = soldierCLass4.Health;
@@ -131,6 +130,14 @@ public class Soldier_control : MonoBehaviour
         }
         else
         {
+            var axisX = Input.GetAxisRaw("Horizontal");
+            rigBody.velocity = new Vector2(axisX * speed * 5, rigBody.velocity.y);
+
+            if (Input.GetButtonDown("Jump") && onGround)
+            {
+                Jump();
+            }
+
             var target_pos = targetFollow.transform.position;
             transform.position = target_pos;
 
@@ -213,7 +220,7 @@ public class Soldier_control : MonoBehaviour
         Commander = 0,
         Engineer = 1,
         Grenadier = 2,
-        Machine_gunner = 3,
+        MachineGunner = 3,
         Medic = 4,
         Sniper = 5,
     }

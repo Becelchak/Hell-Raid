@@ -9,16 +9,15 @@ public abstract class Soldier : MonoBehaviour, IDamageable
     private int health;
 
     [SerializeField]
-    private float moveSpeed;
+    private float moveSpeed = 1f;
 
     [SerializeField]
-    protected float skillCoolDown;
+    protected float skillCoolDown = 60f;
     protected float skillTimer;
+    protected float tempFill;
     protected bool canUseSkill = false;
     protected Image skillIcon;
-
-    [SerializeField]
-    private Squad_logic squadLogic;
+    public Squad_logic squadLogic;
 
     protected Soldier_control control;
     public int Health
@@ -61,15 +60,30 @@ public abstract class Soldier : MonoBehaviour, IDamageable
                 skillTimer -= Time.deltaTime;
                 if (skillTimer <= 0)
                     canUseSkill = true;
-                //skillIcon.fillAmount += 1 / skillCoolDown * Time.deltaTime;
-                skillIcon.fillAmount = 1 - skillTimer / (skillCoolDown / 100 * 100);
+                if (tempFill == 1)
+                    skillIcon.fillAmount = tempFill;
+                else
+                    skillIcon.fillAmount = 1 - skillTimer / (skillCoolDown / 100 * 100);
             }
-            if (canUseSkill && Input.GetKeyDown(KeyCode.R))
+            else
             {
-                skillTimer = skillCoolDown;
-                UseSkill();
-                canUseSkill = false;
-                skillIcon.fillAmount = 0;
+                skillIcon.fillAmount = 1;
+            }
+
+            if (!canUseSkill || !Input.GetKeyDown(KeyCode.R)) return;
+            skillTimer = skillCoolDown;
+            UseSkill();
+            canUseSkill = false;
+            skillIcon.fillAmount = 0;
+        }
+        else
+        {
+            if (!canUseSkill)
+            {
+                skillTimer -= Time.deltaTime;
+                if (skillTimer <= 0)
+                    canUseSkill = true;
+                tempFill = 1 - skillTimer / (skillCoolDown / 100 * 100);
             }
         }
     }
@@ -84,7 +98,7 @@ public abstract class Soldier : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        squadLogic.DeleteFirstSoldier();
+        squadLogic.DeleteSoldier(this);
     }
 
     protected Squad_logic GetSquad()
