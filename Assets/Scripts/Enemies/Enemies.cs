@@ -117,7 +117,7 @@ public class Enemies : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("BulletSniper"))
+        if (other.gameObject.CompareTag("BulletSniper") || other.gameObject.CompareTag("Grenade"))
         {
             TakeDamage(soldierWeapon.damage);
         }
