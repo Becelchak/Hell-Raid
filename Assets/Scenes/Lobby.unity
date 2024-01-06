@@ -596,6 +596,9 @@ MonoBehaviour:
   - {fileID: 26853097}
   - {fileID: 2056454322}
   - {fileID: 1706660871}
+  - {fileID: 815681999}
+  - {fileID: 374641542}
+  - {fileID: 1336324114}
   slot: {fileID: 448161979}
 --- !u!114 &123098163
 MonoBehaviour:
@@ -1623,7 +1626,7 @@ MonoBehaviour:
   bulletObject: {fileID: 20898359}
   skillInfoObject: {fileID: 228979608}
   aboutCharacterObject: {fileID: 1379757595}
-  soldierPrefab: {fileID: 6845073708007054945, guid: e68ad4b010e471a4eab240a23a2c6f47, type: 3}
+  soldierPrefab: {fileID: 7169323821988615552, guid: b0ac82ede014d33459f6632b8c91f18d, type: 3}
   menuInfo: {fileID: 123098162}
   confirmButton: {fileID: 1456631430}
 --- !u!114 &374641542
@@ -3213,9 +3216,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c0029abc080a42447bc5fb574e00b2f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58e7abb8e8b4c8c4abd072df53f6c2c8, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4031,7 +4034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6772009, y: 0.202}
   m_AnchorMax: {x: 1, y: 0.6148754}
-  m_AnchoredPosition: {x: -5.5000305, y: -1.5}
+  m_AnchoredPosition: {x: -5.5, y: -1.5}
   m_SizeDelta: {x: 2, y: 4.4711914}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &856156856
@@ -4081,10 +4084,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -4190,9 +4193,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cd28199ee491db541815908e4d1f00b5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e9cae55f1464164bb8d82d9017104b8, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4443,7 +4446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.029333334, y: 0.014777778}
   m_AnchorMax: {x: 0.47500002, y: 0.4777778}
-  m_AnchoredPosition: {x: -1.468689, y: -1.8699951}
+  m_AnchoredPosition: {x: -1.46875, y: -1.8699951}
   m_SizeDelta: {x: 1.0626221, y: 5.5400085}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &940474891
@@ -4619,9 +4622,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aaef2f6ca7f13de4793a2b846698c703, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2dc1f67c97f8ce42abfca9c0e141f37, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5574,6 +5577,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 938541329, guid: a1a3a520d77760e47a5bdf0e2d1da839, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3200917404630667637, guid: a1a3a520d77760e47a5bdf0e2d1da839, type: 3}
       propertyPath: m_Text
       value: "\u0421\u043F\u0443\u0441\u0442\u0438\u0442\u044C\u0441\u044F \u0432
@@ -6138,7 +6145,7 @@ MonoBehaviour:
   bulletObject: {fileID: 485493818}
   skillInfoObject: {fileID: 1499316416}
   aboutCharacterObject: {fileID: 1794751046}
-  soldierPrefab: {fileID: 6845073708007054945, guid: e68ad4b010e471a4eab240a23a2c6f47, type: 3}
+  soldierPrefab: {fileID: 6845073708007054945, guid: 14af85b6db7ab3e4aa532c5fed5af323, type: 3}
   menuInfo: {fileID: 123098162}
   confirmButton: {fileID: 1456631430}
 --- !u!114 &1336324114
@@ -6726,9 +6733,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a430f256aa15ca14092dec0d40c97312, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 636b49b28ec35b84387521e78ac6a241, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6992,9 +6999,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b61df29d70a819c43b1cac9ba867bb42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 45da254a24916534f963efc62df6374d, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7466,10 +7473,10 @@ RectTransform:
   m_Father: {fileID: 374641540}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -80}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.005996704, y: 0}
+  m_SizeDelta: {x: -0.013000488, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1611528945
 MonoBehaviour:
@@ -7491,9 +7498,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d23efd76bf4bbf24ab7dbf1b5565598f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f6d8b1b8167255a459cd8b6755314e37, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8914,10 +8921,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 44.65
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -9031,7 +9038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.01653347, y: 0.202}
   m_AnchorMax: {x: 0.33420083, y: 0.6148754}
-  m_AnchoredPosition: {x: -0.50006104, y: -1.5}
+  m_AnchoredPosition: {x: -0.5, y: -1.5}
   m_SizeDelta: {x: 6, y: 4.4711914}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1977761211
@@ -9081,10 +9088,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -9651,6 +9658,9 @@ MonoBehaviour:
   - {fileID: 26853097}
   - {fileID: 2056454322}
   - {fileID: 1706660871}
+  - {fileID: 815681999}
+  - {fileID: 374641542}
+  - {fileID: 1336324114}
 --- !u!1 &2056454319
 GameObject:
   m_ObjectHideFlags: 0

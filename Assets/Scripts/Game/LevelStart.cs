@@ -29,7 +29,10 @@ public class LevelStart : MonoBehaviour
             soldierControl.type = YandexGame.savesData.soldierClasses[i];
             squad[i].AddComponent(Type.GetType(soldierControl.type.ToString()));
             var soldier = squad[i].GetComponent<Soldier>();
+            print(soldier.squadLogic);
+            print(soldierControl.squadLogic);
             soldier.squadLogic = soldierControl.squadLogic;
+            print(soldierControl.squadLogic);
             soldier.Health = YandexGame.savesData.hpSoldiers[i];
             print(YandexGame.savesData.weaponsTypes[i]);
             soldier.Weapon = YandexGame.savesData.weaponsTypes[i];

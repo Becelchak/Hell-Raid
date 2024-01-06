@@ -1,5 +1,5 @@
 {
-    "idSave": 4,
+    "idSave": 13,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -13,35 +13,35 @@
     "level": 0,
     "sprites": [
         {
-            "instanceID": 215102
+            "instanceID": 27868
         },
         {
-            "instanceID": 215122
+            "instanceID": 27830
         },
         {
-            "instanceID": 215106
+            "instanceID": 27880
         },
         {
-            "instanceID": 215110
+            "instanceID": 27874
         }
     ],
     "stateColliders": [],
     "soldierClasses": [
-        4,
+        1,
+        0,
         2,
-        4,
-        4
+        5
     ],
     "hpSoldiers": [
         125,
         150,
-        125,
-        125
+        150,
+        100
     ],
     "weaponsTypes": [
-        1,
+        2,
+        0,
         5,
-        1,
-        1
+        4
     ]
 }

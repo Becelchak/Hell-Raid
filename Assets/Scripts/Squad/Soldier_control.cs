@@ -52,7 +52,7 @@ public class Soldier_control : MonoBehaviour
                 healPointTotal = soldierCLass3.Health;
                 weapon = soldierCLass3.Weapon;
                 break;
-            case SoldierClass.Machine_gunner:
+            case SoldierClass.MachineGunner:
                 var soldierCLass4 = GetComponent<MachineGunner>();
                 speed = soldierCLass4.MoveSpeed;
                 healPointTotal = soldierCLass4.Health;
@@ -141,7 +141,6 @@ public class Soldier_control : MonoBehaviour
             var target_pos = targetFollow.transform.position;
             transform.position = target_pos;
 
-
             #region
 
             //var target_pos = targetFollow.transform.position;
@@ -221,7 +220,7 @@ public class Soldier_control : MonoBehaviour
         Commander = 0,
         Engineer = 1,
         Grenadier = 2,
-        Machine_gunner = 3,
+        MachineGunner = 3,
         Medic = 4,
         Sniper = 5,
     }
