@@ -1,5 +1,5 @@
 {
-    "idSave": 112,
+    "idSave": 142,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -44,7 +44,7 @@
         1
     ],
     "ammoInMagazines": [
-        0,
+        5,
         2,
         3,
         3
@@ -56,9 +56,12 @@
         8
     ],
     "tempsAmmo": [
-        0,
-        99,
-        5,
-        8
-    ]
+        1,
+        100,
+        2,
+        7
+    ],
+    "timerTxt": 0.0,
+    "timer": 15.200191497802735,
+    "EnemiesDeath": 9
 }

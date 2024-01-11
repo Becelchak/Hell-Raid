@@ -33,6 +33,10 @@ namespace YG
         public int[] currentsAmmo;
         public int[] tempsAmmo;
 
+        public float timerTxt;
+        public float timer;
+        public int EnemiesDeath;
+
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 
 

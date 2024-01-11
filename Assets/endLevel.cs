@@ -6,16 +6,26 @@ using YG;
 public class endLevel : MonoBehaviour
 {
     [SerializeField]
+    private Secundomer secundomer;
+
+    [SerializeField]
     private List<GameObject> soldiers;
+
+    [SerializeField]
+    private Statistic statistics;
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
+            Time.timeScale = 0f;
             var winPanel = GameObject.Find("Win").GetComponent<CanvasGroup>();
             winPanel.alpha = 1f;
             winPanel.interactable = true;
             winPanel.blocksRaycasts = true;
+            secundomer.EndLevelTimer = secundomer.Timer;
+            statistics.LoadStatistic();
+            statistics.gameObject.SetActive(true);
         }
     }
 
@@ -36,6 +46,8 @@ public class endLevel : MonoBehaviour
             YandexGame.savesData.tempsAmmo[i] = weapon.ammo_temp;
             YandexGame.savesData.currentsAmmo[i] = weapon.ammo_in_magazine;
         }
+        YandexGame.savesData.EnemiesDeath = Enemies.EnemiesDeath;
+        YandexGame.savesData.timer = secundomer.Timer;
         YandexGame.SaveProgress();
         // print(YandexGame.savesData.level);
     }

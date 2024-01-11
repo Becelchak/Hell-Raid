@@ -23,6 +23,10 @@ public class LevelStart : MonoBehaviour
     private void GetLoad()
     {
         YandexGame.savesData.level = SceneManager.GetActiveScene().buildIndex - 1;
+        if (YandexGame.savesData.level == 1)
+        {
+            YandexGame.savesData.EnemiesDeath = 0;
+        }
         YandexGame.SaveProgress();
         for (int i = 0; i < squad.Count; i++)
         {
@@ -39,5 +43,7 @@ public class LevelStart : MonoBehaviour
             weapon.count_magazine = YandexGame.savesData.ammoInMagazines[i];
             weapon.ammo_temp = YandexGame.savesData.tempsAmmo[i];
         }
+
+        Enemies.EnemiesDeath = YandexGame.savesData.EnemiesDeath;
     }
 }
