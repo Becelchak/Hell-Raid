@@ -59,7 +59,7 @@
     <UnityVersion>2021.3.11f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\igork\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\igork\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemies\TraitorPlayer.cs" />
@@ -155,6 +155,9 @@
     <Compile Include="Assets\YandexGame\ScriptsYG\ViewingAdsYG.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Grenadier.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\Leaderboard\LeaderboardYG.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\Play.cs" />
+    <Compile Include="Assets\Scripts\Game\Secundomer.cs" />
+    <Compile Include="Assets\Scripts\Game\Statistic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

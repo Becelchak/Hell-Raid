@@ -1,5 +1,5 @@
 {
-    "idSave": 14,
+    "idSave": 142,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -10,38 +10,58 @@
         true,
         false
     ],
-    "level": 0,
+    "level": 2,
     "sprites": [
         {
-            "instanceID": 26708
+            "instanceID": 26176
         },
         {
-            "instanceID": 26704
+            "instanceID": 26208
         },
         {
-            "instanceID": 26720
+            "instanceID": 26204
         },
         {
-            "instanceID": 26716
+            "instanceID": 26206
         }
     ],
-    "stateColliders": [],
     "soldierClasses": [
-        1,
         2,
         3,
+        5,
         4
     ],
     "hpSoldiers": [
-        125,
         150,
         200,
+        100,
         125
     ],
     "weaponsTypes": [
-        2,
         5,
         3,
+        4,
         1
-    ]
+    ],
+    "ammoInMagazines": [
+        5,
+        2,
+        3,
+        3
+    ],
+    "currentsAmmo": [
+        1,
+        100,
+        5,
+        8
+    ],
+    "tempsAmmo": [
+        1,
+        100,
+        2,
+        7
+    ],
+    "timerTxt": 0.0,
+    "timer": 15.200191497802735,
+    "EnemiesDeath": 9
 }

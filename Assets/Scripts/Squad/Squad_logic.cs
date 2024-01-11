@@ -9,13 +9,15 @@ using UnityEngine;
 public class Squad_logic : MonoBehaviour
 {
     [SerializeField]
+    private LevelStart squadObject;
+
+    [SerializeField]
     private GameObject camera;
 
     [SerializeField]
     [CanBeNull]
     private UiSoldierHud hud;
 
-    [NonSerialized]
     public List<GameObject> units = new List<GameObject>();
 
     void Start()
@@ -78,8 +80,11 @@ public class Squad_logic : MonoBehaviour
     {
         foreach (var unit in units)
         {
+            print(unit);
             if (unit.GetComponent<Soldier>() == soldier)
             {
+                print("нашел солдата");
+                print(units.Count);
                 if (units.Count > 1)
                 {
                     var secondSoldier = units[1];
@@ -98,6 +103,8 @@ public class Squad_logic : MonoBehaviour
                 }
 
                 units.Remove(unit);
+                print("удалил");
+                squadObject.squad.Remove(unit);
                 Destroy(unit, 1f);
                 hud.RefreshSquad(units);
                 break;

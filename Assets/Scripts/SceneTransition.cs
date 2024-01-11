@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YG;
 
 public class SceneTransition : MonoBehaviour
 {
@@ -9,5 +10,10 @@ public class SceneTransition : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(index);
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(YandexGame.savesData.level + 1);
     }
 }

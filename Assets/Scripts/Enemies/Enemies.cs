@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
+using YG;
 
 public class Enemies : MonoBehaviour, IDamageable
 {
+    public static int EnemiesDeath;
     public int Health
     {
         get => health;
@@ -37,13 +39,6 @@ public class Enemies : MonoBehaviour, IDamageable
 
     public List<GameObject> soldiers;
 
-    private Squad_logic squadLogic;
-
-    // [SerializeField]
-    // private List<Soldier_control> soldiersStatus;
-
-    // private List<Soldier> soldiers = new List<Soldier>();
-    // private List<Weapon> soldiersWeapon = new List<Weapon>();
     public bool isBuffed;
 
     private void Awake()
@@ -51,21 +46,7 @@ public class Enemies : MonoBehaviour, IDamageable
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-    }
-
-    private void Start()
-    {
-        // Требуется регулярно обновлять списки солдат, их оружия и статусов, на случай если один из солдат умрет
-        // -> иначе будет ошибка ссылки на несуществующие объекты
-        // foreach (var soldier in soldiersStatus)
-        // {
-        //     soldiers.Add(soldier.gameObject.GetComponent<Soldier>());
-        // }
-        // foreach (var soldier in soldiers)
-        // {
-        //     soldiersWeapon.Add(soldier.gameObject.transform.GetChild(1).GetComponent<Weapon>());
-        // }
-        for (int i = 0; i < soldiers.Count; i++) { }
+        print(EnemiesDeath);
     }
 
     private void Update()
@@ -76,14 +57,11 @@ public class Enemies : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        // FindActivePlayer();
-        // soldierWeapon = GetWeapon();
         Attack();
     }
 
     public virtual void Attack()
     {
-        // Место ссылки на потенциально несуществующий объект
         float distance = (float)
             Math.Round((playerTransform.position - gameObject.transform.position).sqrMagnitude);
         if (attackTimer >= 1f / attackSpeed && distance < attackRange * attackRange)
@@ -107,6 +85,8 @@ public class Enemies : MonoBehaviour, IDamageable
     public virtual void Die()
     {
         Destroy(gameObject);
+        EnemiesDeath += 1;
+        print(EnemiesDeath);
     }
 
     public virtual void Move() //У некоторых мобов свои маршруты.
@@ -127,30 +107,4 @@ public class Enemies : MonoBehaviour, IDamageable
             Destroy(other.gameObject);
         }
     }
-
-    // private void FindActivePlayer()
-    // {
-    //     for (int i = 0; i < soldiers.Count; i++)
-    //     {
-    //         print("ищу игрока");
-    //         // Место ссылки на потенциально несуществующий объект
-    //         if (soldiersStatus[i].isPlayer)
-    //         {
-    //             soldierTarget = soldiers[i];
-    //             playerTransform = soldierTarget.transform;
-    //         }
-    //         print(playerTransform);
-    //     }
-    // }
-
-    // private Weapon GetWeapon()
-    // {
-    //     // Место ссылки на потенциально несуществующий объект
-    //     foreach (var weapon in soldiersWeapon)
-    //     {
-    //         if (weapon.gameObject.activeSelf)
-    //             return weapon;
-    //     }
-    //     return null;
-    // }
 }

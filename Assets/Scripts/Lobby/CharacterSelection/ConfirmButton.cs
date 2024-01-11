@@ -39,14 +39,10 @@ public class ConfirmButton : MonoBehaviour
     {
         logic = squad.GetComponent<Squad_logic>();
         squadTransform = squadTransform.gameObject.GetComponent<Transform>();
-        // soldierCollider = soldierPrefab.gameObject.GetComponent<Collider2D>();
-        // soldierTransform = soldierPrefab.gameObject.GetComponent<Transform>();
-        // soldier = soldierPrefab.gameObject.GetComponent<Soldier_control>();
-        // soldierImage = soldierPrefab.gameObject.GetComponent<SpriteRenderer>();
         this.gameObject.SetActive(false);
     }
 
-    public void Confirm() //Выделить методы
+    public void Confirm()
     {
         for (int i = 0; i < slots.selectButtons.Count; i++)
         {

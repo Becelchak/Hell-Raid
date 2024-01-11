@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TransferData
 {
-    public Sprite sprite;
-    public bool colliderIsOn;
-    public bool isPlayer;
-    public Transform target;
+    // public Sprite sprite;
+    // public bool colliderIsOn;
+    // public bool isPlayer;
+    // public Transform target;
 }
