@@ -23,6 +23,7 @@ public class LevelStart : MonoBehaviour
     private void GetLoad()
     {
         YandexGame.savesData.level = SceneManager.GetActiveScene().buildIndex - 1;
+        YandexGame.SaveProgress();
         for (int i = 0; i < squad.Count; i++)
         {
             squad[i].GetComponent<SpriteRenderer>().sprite = YandexGame.savesData.sprites[i];

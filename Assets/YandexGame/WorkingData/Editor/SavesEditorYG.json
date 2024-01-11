@@ -1,5 +1,5 @@
 {
-    "idSave": 106,
+    "idSave": 112,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -10,55 +10,55 @@
         true,
         false
     ],
-    "level": 1,
+    "level": 2,
     "sprites": [
         {
-            "instanceID": 26204
+            "instanceID": 26176
         },
         {
             "instanceID": 26208
         },
         {
-            "instanceID": 26206
+            "instanceID": 26204
         },
         {
-            "instanceID": 26170
+            "instanceID": 26206
         }
     ],
     "soldierClasses": [
-        5,
+        2,
         3,
-        4,
-        0
+        5,
+        4
     ],
     "hpSoldiers": [
-        100,
+        150,
         200,
-        125,
-        150
+        100,
+        125
     ],
     "weaponsTypes": [
-        4,
+        5,
         3,
-        1,
-        0
+        4,
+        1
     ],
     "ammoInMagazines": [
+        0,
+        2,
         3,
-        3,
-        3,
-        2
+        3
     ],
     "currentsAmmo": [
+        1,
+        100,
         5,
-        8,
-        5,
-        100
+        8
     ],
     "tempsAmmo": [
         0,
-        6,
+        99,
         5,
-        100
+        8
     ]
 }
