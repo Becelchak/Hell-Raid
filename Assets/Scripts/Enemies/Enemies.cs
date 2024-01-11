@@ -5,7 +5,7 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class Enemies : MonoBehaviour, IDamageable
+public class Enemies : MonoBehaviour, IDamageable
 {
     public int Health
     {
@@ -25,20 +25,25 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     public int attackDamage;
 
     [SerializeField]
-    protected int attackRange;
+    protected float attackRange;
     public float speed;
     private float attackTimer;
 
-    private Transform playerTransform;
     private NavMeshAgent agent;
-    private Soldier soldierTarget;
-    private Weapon soldierWeapon;
 
-    [SerializeField]
-    private List<Soldier_control> soldiersStatus;
+    public static Transform playerTransform;
+    public static Soldier soldierTarget;
+    public static Weapon soldierWeapon;
 
-    private List<Soldier> soldiers = new List<Soldier>();
-    private List<Weapon> soldiersWeapon = new List<Weapon>();
+    public List<GameObject> soldiers;
+
+    private Squad_logic squadLogic;
+
+    // [SerializeField]
+    // private List<Soldier_control> soldiersStatus;
+
+    // private List<Soldier> soldiers = new List<Soldier>();
+    // private List<Weapon> soldiersWeapon = new List<Weapon>();
     public bool isBuffed;
 
     private void Awake()
@@ -52,28 +57,27 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     {
         // Требуется регулярно обновлять списки солдат, их оружия и статусов, на случай если один из солдат умрет
         // -> иначе будет ошибка ссылки на несуществующие объекты
-        foreach (var soldier in soldiersStatus)
-        {
-            soldiers.Add(soldier.gameObject.GetComponent<Soldier>());
-        }
-        foreach (var soldier in soldiers)
-        {
-            soldiersWeapon.Add(soldier.gameObject.transform.GetChild(1).GetComponent<Weapon>());
-        }
+        // foreach (var soldier in soldiersStatus)
+        // {
+        //     soldiers.Add(soldier.gameObject.GetComponent<Soldier>());
+        // }
+        // foreach (var soldier in soldiers)
+        // {
+        //     soldiersWeapon.Add(soldier.gameObject.transform.GetChild(1).GetComponent<Weapon>());
+        // }
+        for (int i = 0; i < soldiers.Count; i++) { }
     }
 
     private void Update()
     {
         attackTimer += Time.deltaTime;
         Move();
-
-        
     }
 
     private void FixedUpdate()
     {
-        FindActivePlayer();
-        soldierWeapon = GetWeapon();
+        // FindActivePlayer();
+        // soldierWeapon = GetWeapon();
         Attack();
     }
 
@@ -113,7 +117,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("BulletSniper"))
+        if (other.gameObject.CompareTag("BulletSniper") || other.gameObject.CompareTag("Grenade"))
         {
             TakeDamage(soldierWeapon.damage);
         }
@@ -122,31 +126,31 @@ public abstract class Enemies : MonoBehaviour, IDamageable
             TakeDamage(soldierWeapon.damage);
             Destroy(other.gameObject);
         }
-        
     }
 
-    private void FindActivePlayer()
-    {
-        for (int i = 0; i < soldiers.Count; i++)
-        {
-            //print("ищу игрока");
-            // Место ссылки на потенциально несуществующий объект
-            if (soldiersStatus[i].isPlayer)
-            {
-                soldierTarget = soldiers[i];
-                playerTransform = soldierTarget.transform;
-            }
-        }
-    }
+    // private void FindActivePlayer()
+    // {
+    //     for (int i = 0; i < soldiers.Count; i++)
+    //     {
+    //         print("ищу игрока");
+    //         // Место ссылки на потенциально несуществующий объект
+    //         if (soldiersStatus[i].isPlayer)
+    //         {
+    //             soldierTarget = soldiers[i];
+    //             playerTransform = soldierTarget.transform;
+    //         }
+    //         print(playerTransform);
+    //     }
+    // }
 
-    private Weapon GetWeapon()
-    {
-        // Место ссылки на потенциально несуществующий объект
-        foreach (var weapon in soldiersWeapon)
-        {
-            if (weapon.gameObject.activeSelf)
-                return weapon;
-        }
-        return null;
-    }
+    // private Weapon GetWeapon()
+    // {
+    //     // Место ссылки на потенциально несуществующий объект
+    //     foreach (var weapon in soldiersWeapon)
+    //     {
+    //         if (weapon.gameObject.activeSelf)
+    //             return weapon;
+    //     }
+    //     return null;
+    // }
 }
