@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public abstract class Soldier : MonoBehaviour, IDamageable
 {
+    public GameObject prefab;
+
     [SerializeField]
     private int health;
 
@@ -26,8 +28,8 @@ public abstract class Soldier : MonoBehaviour, IDamageable
         set
         {
             health = value;
-            if (health <= 0)
-                Die();
+            // if (health <= 0)
+            //     Die();
         }
     }
 
@@ -53,6 +55,10 @@ public abstract class Soldier : MonoBehaviour, IDamageable
 
     void Update()
     {
+        if (health <= 0)
+        {
+            Die();
+        }
         if (control.IsPlayerControl())
         {
             if (!canUseSkill)
@@ -70,7 +76,8 @@ public abstract class Soldier : MonoBehaviour, IDamageable
                 skillIcon.fillAmount = 1;
             }
 
-            if (!canUseSkill || !Input.GetKeyDown(KeyCode.R)) return;
+            if (!canUseSkill || !Input.GetKeyDown(KeyCode.R))
+                return;
             skillTimer = skillCoolDown;
             UseSkill();
             canUseSkill = false;

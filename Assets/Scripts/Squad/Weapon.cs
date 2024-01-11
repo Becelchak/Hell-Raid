@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
@@ -16,9 +17,9 @@ public class Weapon : MonoBehaviour
     private float coolDownShoot = 0;
     public float timerShoot = 0;
     public int damage = 0;
-    private int ammo_in_magazine = 0;
-    private int ammo_temp = 0;
-    private int count_magazine = 0;
+    public int ammo_in_magazine;
+    public int ammo_temp;
+    public int count_magazine;
 
     private float speed_bullet;
     private Text uiAmmoCount;
@@ -26,6 +27,7 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
+        print(YandexGame.savesData.level);
         SetParameterWeapon();
         if (Weapon_Type != Weapons_Type.Drone_gun)
         {
@@ -184,9 +186,12 @@ public class Weapon : MonoBehaviour
                 coolDownShoot = 0.5f;
                 damage = 10;
 
-                ammo_in_magazine = 15;
-                ammo_temp = ammo_in_magazine;
-                count_magazine = 3;
+                if (YandexGame.savesData.level == 1)
+                {
+                    ammo_in_magazine = 15;
+                    ammo_temp = ammo_in_magazine;
+                    count_magazine = 3;
+                }
                 break;
             case Weapons_Type.Shoot_Gun:
 
@@ -194,9 +199,13 @@ public class Weapon : MonoBehaviour
                 coolDownShoot = 1f;
                 damage = 10;
 
-                ammo_in_magazine = 8;
-                ammo_temp = ammo_in_magazine;
-                count_magazine = 3;
+                if (YandexGame.savesData.level == 1)
+                {
+                    ammo_in_magazine = 8;
+                    count_magazine = 3;
+                    ammo_temp = ammo_in_magazine;
+                }
+
                 break;
             case Weapons_Type.Heavy_Machine_Gun:
                 var array = new int[] { 5, 10, 15 };
@@ -204,43 +213,57 @@ public class Weapon : MonoBehaviour
                 coolDownShoot = 0.17f;
                 damage = array[Random.Range(0, 2)];
 
-                ammo_in_magazine = 100;
-                ammo_temp = ammo_in_magazine;
-                count_magazine = 2;
+                if (YandexGame.savesData.level == 1)
+                {
+                    ammo_in_magazine = 100;
+                    count_magazine = 2;
+                    ammo_temp = ammo_in_magazine;
+                }
+
                 break;
             case Weapons_Type.Little_Machine_Gun:
                 speed_bullet = 11f;
                 coolDownShoot = 0.2f;
                 damage = 7;
 
-                ammo_in_magazine = 30;
-                ammo_temp = ammo_in_magazine;
-                count_magazine = 2;
+                if (YandexGame.savesData.level == 1)
+                {
+                    ammo_in_magazine = 30;
+                    count_magazine = 2;
+                    ammo_temp = ammo_in_magazine;
+                }
+
                 break;
             case Weapons_Type.Sniper_Rifle:
                 speed_bullet = 15f;
                 coolDownShoot = 1.5f;
                 damage = 80;
 
-                ammo_in_magazine = 5;
-                ammo_temp = ammo_in_magazine;
-                count_magazine = 3;
+                if (YandexGame.savesData.level == 1)
+                {
+                    ammo_in_magazine = 5;
+                    count_magazine = 3;
+                    ammo_temp = ammo_in_magazine;
+                }
+
                 break;
             case Weapons_Type.Grenade_Launcher:
 
                 speed_bullet = 4f;
                 coolDownShoot = 1f;
                 damage = 50;
+                if (YandexGame.savesData.level == 1)
+                {
+                    ammo_in_magazine = 1;
+                    count_magazine = 5;
+                    ammo_temp = ammo_in_magazine;
+                }
 
-                ammo_in_magazine = 1;
-                ammo_temp = ammo_in_magazine;
-                count_magazine = 5;
                 break;
             case Weapons_Type.Drone_gun:
                 speed_bullet = 7f;
                 coolDownShoot = 0.5f;
                 damage = 3;
-
                 ammo_in_magazine = 99;
                 ammo_temp = ammo_in_magazine;
                 count_magazine = 10;

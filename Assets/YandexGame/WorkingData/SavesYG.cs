@@ -23,11 +23,15 @@ namespace YG
 
         private readonly int squadSize = 4;
         public int level;
+
         public Sprite[] sprites;
-        public bool[] stateColliders;
         public Soldier_control.SoldierClass[] soldierClasses;
         public int[] hpSoldiers;
+
         public Weapon.Weapons_Type[] weaponsTypes;
+        public int[] ammoInMagazines;
+        public int[] currentsAmmo;
+        public int[] tempsAmmo;
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
 
@@ -42,6 +46,9 @@ namespace YG
             soldierClasses = new Soldier_control.SoldierClass[squadSize];
             hpSoldiers = new int[squadSize];
             weaponsTypes = new Weapon.Weapons_Type[squadSize];
+            ammoInMagazines = new int[squadSize];
+            currentsAmmo = new int[squadSize];
+            tempsAmmo = new int[squadSize];
         }
     }
 }

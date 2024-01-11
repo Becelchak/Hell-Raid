@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YG;
 
 public class LevelStart : MonoBehaviour
 {
-    [SerializeField]
-    private List<GameObject> squad;
+    public List<GameObject> squad;
 
     private void OnEnable() => YandexGame.GetDataEvent += GetLoad;
 
@@ -22,6 +22,7 @@ public class LevelStart : MonoBehaviour
 
     private void GetLoad()
     {
+        YandexGame.savesData.level = SceneManager.GetActiveScene().buildIndex - 1;
         for (int i = 0; i < squad.Count; i++)
         {
             squad[i].GetComponent<SpriteRenderer>().sprite = YandexGame.savesData.sprites[i];
@@ -29,13 +30,13 @@ public class LevelStart : MonoBehaviour
             soldierControl.type = YandexGame.savesData.soldierClasses[i];
             squad[i].AddComponent(Type.GetType(soldierControl.type.ToString()));
             var soldier = squad[i].GetComponent<Soldier>();
-            print(soldier.squadLogic);
-            print(soldierControl.squadLogic);
             soldier.squadLogic = soldierControl.squadLogic;
-            print(soldierControl.squadLogic);
             soldier.Health = YandexGame.savesData.hpSoldiers[i];
-            print(YandexGame.savesData.weaponsTypes[i]);
             soldier.Weapon = YandexGame.savesData.weaponsTypes[i];
+            var weapon = squad[i].transform.Find("Weapon").gameObject.GetComponent<Weapon>();
+            weapon.ammo_in_magazine = YandexGame.savesData.currentsAmmo[i];
+            weapon.count_magazine = YandexGame.savesData.ammoInMagazines[i];
+            weapon.ammo_temp = YandexGame.savesData.tempsAmmo[i];
         }
     }
 }
