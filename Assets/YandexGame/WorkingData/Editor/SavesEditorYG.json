@@ -1,5 +1,5 @@
 {
-    "idSave": 145,
+    "idSave": 148,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -16,32 +16,32 @@
             "instanceID": 25808
         },
         {
-            "instanceID": 25748
-        },
-        {
-            "instanceID": 25780
+            "instanceID": 25812
         },
         {
             "instanceID": 25792
+        },
+        {
+            "instanceID": 25780
         }
     ],
     "soldierClasses": [
         0,
-        4,
-        3,
-        2
+        5,
+        2,
+        3
     ],
     "hpSoldiers": [
         150,
-        125,
-        200,
-        150
+        100,
+        150,
+        200
     ],
     "weaponsTypes": [
         0,
-        1,
-        3,
-        5
+        4,
+        5,
+        3
     ],
     "ammoInMagazines": [
         5,
