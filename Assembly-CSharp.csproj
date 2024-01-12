@@ -70,6 +70,7 @@
     <Compile Include="Assets\YandexGame\ScriptsYG\InfoYG\InfoYG.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Soldier.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\Storage\Storage_yg.cs" />
+    <Compile Include="Assets\Scripts\Game\Statistic.cs" />
     <Compile Include="Assets\Scripts\TransferData.cs" />
     <Compile Include="Assets\Scripts\Enemies\IDamageable.cs" />
     <Compile Include="Assets\YandexGame\Example\Scripts\LanguageExample.cs" />
@@ -116,9 +117,11 @@
     <Compile Include="Assets\Scripts\Enemies\Enemies.cs" />
     <Compile Include="Assets\Scripts\Lobby\CharacterSelection\ConfirmButton.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\AdNotificationYG.cs" />
+    <Compile Include="Assets\Scripts\Game\Secundomer.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\YandexGame.cs" />
     <Compile Include="Assets\Scripts\Enemies\Peasant.cs" />
     <Compile Include="Assets\endLevel.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\Play.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\GameReadyAPI\GRA_yg.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\GraphicSettingsYG.cs" />
     <Compile Include="Assets\Universe.cs" />
@@ -155,9 +158,6 @@
     <Compile Include="Assets\YandexGame\ScriptsYG\ViewingAdsYG.cs" />
     <Compile Include="Assets\Scripts\Squad\Soldiers classes\Grenadier.cs" />
     <Compile Include="Assets\YandexGame\ScriptsYG\Leaderboard\LeaderboardYG.cs" />
-    <Compile Include="Assets\Scripts\MainMenu\Play.cs" />
-    <Compile Include="Assets\Scripts\Game\Secundomer.cs" />
-    <Compile Include="Assets\Scripts\Game\Statistic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
