@@ -58,10 +58,12 @@ public class Enemies : MonoBehaviour, IDamageable
     private void FixedUpdate()
     {
         Attack();
+        print("работает");
     }
 
     public virtual void Attack()
     {
+        print("заходит");
         float distance = (float)
             Math.Round((playerTransform.position - gameObject.transform.position).sqrMagnitude);
         if (attackTimer >= 1f / attackSpeed && distance < attackRange * attackRange)

@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: df02fc5d4ff8c8b4cb71e03bf7bf5624, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,7 +109,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 4
 --- !u!70 &7949676476764048958
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,8 +141,8 @@ MonoBehaviour:
   health: 150
   attackSpeed: 1.2
   attackDamage: 10
-  attackRange: 1
-  speed: 1.3
+  attackRange: 5
+  speed: 3
   soldiers: []
   isBuffed: 0
 --- !u!50 &8159993503068933181
