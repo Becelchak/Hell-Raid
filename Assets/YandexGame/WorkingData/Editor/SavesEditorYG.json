@@ -1,0 +1,67 @@
+{
+    "idSave": 2,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "money": 1,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "level": 1,
+    "sprites": [
+        {
+            "instanceID": 26056
+        },
+        {
+            "instanceID": 26106
+        },
+        {
+            "instanceID": 26024
+        },
+        {
+            "instanceID": 26118
+        }
+    ],
+    "soldierClasses": [
+        4,
+        2,
+        1,
+        0
+    ],
+    "hpSoldiers": [
+        125,
+        150,
+        125,
+        150
+    ],
+    "weaponsTypes": [
+        1,
+        5,
+        2,
+        0
+    ],
+    "ammoInMagazines": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "currentsAmmo": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "tempsAmmo": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "timerTxt": 0.0,
+    "timer": 0.0,
+    "EnemiesDeath": 0
+}
