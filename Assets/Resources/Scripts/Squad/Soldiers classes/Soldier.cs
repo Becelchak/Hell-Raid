@@ -70,7 +70,12 @@ public abstract class Soldier : MonoBehaviour, IDamageable
                 skillIcon.fillAmount = 1;
             }
 
+<<<<<<< Updated upstream:Assets/Resources/Scripts/Squad/Soldiers classes/Soldier.cs
             if (!canUseSkill || !Input.GetKeyDown(KeyCode.R)) return;
+=======
+            if (!canUseSkill || !Input.GetKeyDown(KeyCode.F))
+                return;
+>>>>>>> Stashed changes:Assets/Scripts/Squad/Soldiers classes/Soldier.cs
             skillTimer = skillCoolDown;
             UseSkill();
             canUseSkill = false;

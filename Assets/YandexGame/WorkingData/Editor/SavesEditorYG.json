@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
     "idSave": 1,
+=======
+    "idSave": 242,
+>>>>>>> Stashed changes
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -10,6 +14,7 @@
         true,
         false
     ],
+<<<<<<< Updated upstream
     "level": 0,
     "sprites": [
         {
@@ -23,13 +28,52 @@
         },
         {
             "instanceID": 26572
+=======
+    "level": 1,
+    "sprites": [
+        {
+            "instanceID": 32014
+        },
+        {
+            "instanceID": 32014
+        },
+        {
+            "instanceID": 32014
+        },
+        {
+            "instanceID": 32014
+>>>>>>> Stashed changes
         }
     ],
     "stateColliders": [],
     "soldierClasses": [
+<<<<<<< Updated upstream
         2,
         4,
         0,
+=======
+        0,
+        0,
+        0,
+        0
+    ],
+    "hpSoldiers": [
+        150,
+        150,
+        150,
+        150
+    ],
+    "weaponsTypes": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "ammoInMagazines": [
+        3,
+        2,
+        2,
+>>>>>>> Stashed changes
         3
     ],
     "hpSoldiers": [

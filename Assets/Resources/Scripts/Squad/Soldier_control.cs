@@ -29,6 +29,7 @@ public class Soldier_control : MonoBehaviour
 
     private Soldier soldier;
     public Squad_logic squadLogic;
+    private bool facingRight = true;
 
     void Start()
     {
@@ -118,6 +119,22 @@ public class Soldier_control : MonoBehaviour
             }
             weapon.timerShoot -= Time.deltaTime;
 
+            //Rotate
+            if (((mousePosition.x < transform.position.x && mousePosition.y > transform.position.y)
+                 || (mousePosition.x < transform.position.x && mousePosition.y < transform.position.y))
+                && facingRight)
+            {
+                FlipBody();
+            }
+            //Left
+            else
+            if (((mousePosition.x > transform.position.x && mousePosition.y > transform.position.y)
+                 || (mousePosition.x > transform.position.x && mousePosition.y < transform.position.y))
+                && !facingRight)
+            {
+                FlipBody();
+            }
+
             //Change unit
             if (Input.GetKeyDown(KeyCode.Alpha1))
                 squadLogic.ChangeSoldier(0);
@@ -181,6 +198,12 @@ public class Soldier_control : MonoBehaviour
         }
 
         healPointTemp = soldier.Health;
+    }
+
+    public void FlipBody()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(Vector3.up * 180);
     }
 
     public float GetHealthPoint()

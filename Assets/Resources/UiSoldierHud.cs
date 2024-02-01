@@ -19,8 +19,9 @@ public class UiSoldierHud : MonoBehaviour
         for (var j = 0; j < soldiersIconsCanvasGroups.Count; j++)
         {
             var g = soldiersIconsCanvasGroups[j].gameObject;
-            var i = g.transform.GetChild(1).gameObject.GetComponent<Image>();
+            var i = g.transform.GetChild(2).gameObject.GetComponent<Image>();
             soldiersHealthBar[j] = i;
+            FindCLass(g, soldiers[j]);
         }
     }
 
@@ -62,6 +63,33 @@ public class UiSoldierHud : MonoBehaviour
         {
             icon.alpha = 0;
             icon.interactable = false;
+        }
+    }
+
+    public void FindCLass(GameObject iconNow, Soldier_control soldierNow)
+    {
+        var iconSoldier = iconNow.transform.GetChild(3).gameObject.GetComponent<Image>();
+
+        switch (soldierNow.type)
+        {
+            case Soldier_control.SoldierClass.Commander:
+                iconSoldier.sprite = Resources.Load<Sprite>("Texture/UI soldiers/Commander");
+                break;
+            case Soldier_control.SoldierClass.Medic:
+                iconSoldier.sprite = Resources.Load<Sprite>("Texture/UI soldiers/Med");
+                break;
+            case Soldier_control.SoldierClass.MachineGunner:
+                iconSoldier.sprite = Resources.Load<Sprite>("Texture/UI soldiers/Heavy");
+                break;
+            case Soldier_control.SoldierClass.Engineer:
+                iconSoldier.sprite = Resources.Load<Sprite>("Texture/UI soldiers/Eng");
+                break;
+            case Soldier_control.SoldierClass.Grenadier:
+                iconSoldier.sprite = Resources.Load<Sprite>("Texture/UI soldiers/Gren");
+                break;
+            case Soldier_control.SoldierClass.Sniper:
+                iconSoldier.sprite = Resources.Load<Sprite>("Texture/UI soldiers/Sniper");
+                break;
         }
     }
 }
